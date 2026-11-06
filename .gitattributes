@@ -1,0 +1,5 @@
+# Preserve exact dataset, configuration and evidence hashes across platforms.
+* -text
+*.safetensors binary
+*.parquet binary
+*.tar.gz binary

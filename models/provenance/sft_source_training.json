@@ -1,0 +1,6 @@
+{
+  "base_model_id": "dllm-hub/Qwen3-0.6B-diffusion-mdlm-v0.1",
+  "base_model_revision": "c8d24a3f4adaeef46881b450e1bf7d1005203bd7",
+  "adapter_sha256": "320d3459f8678878aeaa1d36f421b1b238f374bbb081d03e146e50c17d6f3be2",
+  "merged_diffusion_model": true
+}

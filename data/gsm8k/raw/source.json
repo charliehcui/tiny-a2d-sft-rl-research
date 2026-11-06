@@ -1,0 +1,22 @@
+{
+  "dataset": "openai/gsm8k",
+  "config": "main",
+  "revision": "740312add88f781978c0658806c59bc2815b9866",
+  "license": "MIT",
+  "files": {
+    "train": {
+      "file": "train-00000-of-00001.parquet",
+      "url": "https://huggingface.co/datasets/openai/gsm8k/resolve/740312add88f781978c0658806c59bc2815b9866/main/train-00000-of-00001.parquet",
+      "sha256": "ea82612ea9582142387730c793eb67d3b12849002bc0b7fa6f8efafa7351419d",
+      "bytes": 2306545,
+      "rows": 7473
+    },
+    "test": {
+      "file": "test-00000-of-00001.parquet",
+      "url": "https://huggingface.co/datasets/openai/gsm8k/resolve/740312add88f781978c0658806c59bc2815b9866/main/test-00000-of-00001.parquet",
+      "sha256": "ee7b8da9e381df27b9e3f7758a159ab2bdaa4dbaa910546cbbc47e0cb44e4f59",
+      "bytes": 419088,
+      "rows": 1319
+    }
+  }
+}

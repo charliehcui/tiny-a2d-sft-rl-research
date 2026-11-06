@@ -1,0 +1,30 @@
+{
+  "status": "complete",
+  "optimizer_steps": 626,
+  "planned_optimizer_steps": 626,
+  "epochs": 2.0,
+  "trainable_parameters": 5046272,
+  "training_seconds": 4990.142954140902,
+  "training_metrics": {
+    "train_runtime": 4989.6775,
+    "train_samples_per_second": 2.004,
+    "train_steps_per_second": 0.125,
+    "total_flos": 5421609812754432.0,
+    "train_loss": 0.7316899720472269,
+    "epoch": 2.0
+  },
+  "validation_metrics": {
+    "eval_loss": 0.7660521268844604,
+    "eval_runtime": 84.5194,
+    "eval_samples_per_second": 5.916,
+    "eval_steps_per_second": 5.916,
+    "epoch": 2.0
+  },
+  "peak_allocated_bytes": 2227170304,
+  "peak_reserved_bytes": 7342129152,
+  "base_model_revision": "c8d24a3f4adaeef46881b450e1bf7d1005203bd7",
+  "resume_from": null,
+  "gpu_name": "NVIDIA GeForce RTX 4090",
+  "total_seconds": 5114.224857831374,
+  "free_persistent_bytes": 2097152000
+}

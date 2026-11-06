@@ -1,0 +1,72 @@
+{
+  "task": "gsm8k_bluewhale_xml",
+  "dataset_path": "json",
+  "dataset_kwargs": {
+    "data_files": {
+      "validation": "data/gsm8k/splits/validation.jsonl",
+      "test": "data/gsm8k/splits/test.jsonl"
+    }
+  },
+  "training_split": null,
+  "validation_split": "validation",
+  "test_split": "test",
+  "output_type": "generate_until",
+  "doc_to_text": "\nRespond in the following format:\n<reasoning>\n...\n</reasoning>\n<answer>\n...\n</answer>\n\n\n{{question}}",
+  "doc_to_target": "{{answer_value}}",
+  "num_fewshot": 0,
+  "repeats": 1,
+  "generation_kwargs": {
+    "until": [
+      "<|im_end|>"
+    ]
+  },
+  "filter_list": [
+    {
+      "name": "xml-answer",
+      "filter": [
+        {
+          "function": "regex",
+          "regex_pattern": "(?s)<answer>\\s*([-+]?[0-9][0-9,]*(?:\\.[0-9]+)?)\\s*</answer>",
+          "group_select": -1
+        },
+        {
+          "function": "take_first"
+        }
+      ]
+    },
+    {
+      "name": "flexible-extract",
+      "filter": [
+        {
+          "function": "regex",
+          "regex_pattern": "(-?[$0-9.,]{2,})|(-?[0-9]+)",
+          "group_select": -1
+        },
+        {
+          "function": "take_first"
+        }
+      ]
+    }
+  ],
+  "metric_list": [
+    {
+      "metric": "exact_match",
+      "aggregation": "mean",
+      "higher_is_better": true,
+      "ignore_case": true,
+      "ignore_punctuation": false,
+      "regexes_to_ignore": [
+        ",",
+        "\\$",
+        "\\.$"
+      ]
+    }
+  ],
+  "metadata": {
+    "version": 1,
+    "source_dataset": "openai/gsm8k",
+    "source_config": "main",
+    "source_revision": "740312add88f781978c0658806c59bc2815b9866",
+    "protocol": "Official test questions with shared zero-shot XML prompt; not the published 8-shot gsm8k_cot protocol."
+  }
+}

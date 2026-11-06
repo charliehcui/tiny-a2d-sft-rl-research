@@ -1,0 +1,23 @@
+{
+  "protocol_version": "bluewhale-gsm8k-xml-v2-batch8",
+  "model_id": "dllm-hub/Qwen3-0.6B-diffusion-mdlm-v0.1",
+  "model_revision": "c8d24a3f4adaeef46881b450e1bf7d1005203bd7",
+  "dllm_revision": "ca176752fbceec49c6b4777a2c18ae88e4eb10ed",
+  "harness_revision": "dca091dbee3d6ee1dab268e9f649aa64e8db97d8",
+  "primary_metric": "exact_match,flexible-extract",
+  "secondary_metric": "exact_match,xml-answer",
+  "num_fewshot": 0,
+  "batch_size": 8,
+  "seed": 42,
+  "dtype": "bfloat16",
+  "attn_implementation": "sdpa",
+  "max_new_tokens": 256,
+  "steps": 256,
+  "block_size": 256,
+  "temperature": 0.0,
+  "cfg_scale": 0.0,
+  "remasking": "low_confidence",
+  "right_shift_logits": false,
+  "gpu_price_cny_per_hour": 2.2,
+  "timing_definition": "Batched throughput: batch wall time / actual batch size; not single-request latency"
+}

@@ -1,0 +1,118 @@
+{
+  "dataset": "openai/gsm8k",
+  "config": "main",
+  "source_revision": "740312add88f781978c0658806c59bc2815b9866",
+  "dllm_revision_reviewed": "ca176752fbceec49c6b4777a2c18ae88e4eb10ed",
+  "seed": 42,
+  "split_method": "Sort official train rows by SHA256(str(seed) + newline + normalized_question); first 500 dev, next 5000 SFT, remainder RL; preserve source order within output splits",
+  "counts": {
+    "validation": 500,
+    "sft_train": 5000,
+    "rl_train": 1973,
+    "test": 1319
+  },
+  "test_policy": "All 1319 official test rows; original question/answer and order unchanged; never training or tuning",
+  "prompt_template": "\nRespond in the following format:\n<reasoning>\n...\n</reasoning>\n<answer>\n...\n</answer>\n",
+  "prompt_construction": "SYSTEM_PROMPT + two newline characters + original question, one user message",
+  "answer_processing": "Keep original answer and final_answer; answer_value removes thousands separators using exact Decimal arithmetic; SFT removes only <<calculator annotations>> from the original reasoning",
+  "tokenized": false,
+  "pyarrow_version": "23.0.0",
+  "python_version": "3.13.14 (tags/v3.13.14:fd17997, Jun 10 2026, 13:03:48) [MSC v.1944 64 bit (AMD64)]",
+  "files": [
+    {
+      "path": "data/gsm8k/processed/eval/test_labels.jsonl",
+      "bytes": 510944,
+      "sha256": "e1e3e0906c542b7b36cd252a94afc864020810db8a7ac919dc4d973d8180ac1c"
+    },
+    {
+      "path": "data/gsm8k/processed/eval/test_prompts.jsonl",
+      "bytes": 885075,
+      "sha256": "cdd470e9534c465d90ec04bbb1f3e2de5ec818256de33eb6e188a30981ac251f"
+    },
+    {
+      "path": "data/gsm8k/processed/eval/validation_labels.jsonl",
+      "bytes": 195631,
+      "sha256": "45284adb0abd7ae8b4271c2cec614a4592f2772ce40662503e74a310ae4f3807"
+    },
+    {
+      "path": "data/gsm8k/processed/eval/validation_prompts.jsonl",
+      "bytes": 332980,
+      "sha256": "57bd2e8da86ad427c1e167089f425cdedd8bcc6932bd9f55b4331a9044d5bc6f"
+    },
+    {
+      "path": "data/gsm8k/processed/rl_train.jsonl",
+      "bytes": 1983221,
+      "sha256": "7088adb90f46b53d9d0917991d54bdb39ceaf40d54d75587fefddb7c6c8d62c5"
+    },
+    {
+      "path": "data/gsm8k/processed/sft/test.parquet",
+      "bytes": 219007,
+      "sha256": "96b0ded0b62e73899f66958ce6b934160a5d571ae0dda0b26fe65b822d8f9098"
+    },
+    {
+      "path": "data/gsm8k/processed/sft/train.parquet",
+      "bytes": 2116115,
+      "sha256": "762f767b0610067fe3d8f16635bee475eff4ea908fe5bb49859a216a9f3b49c0"
+    },
+    {
+      "path": "data/gsm8k/processed/sft_train.jsonl",
+      "bytes": 6797567,
+      "sha256": "e489fa10de27e64b5f38c5b689213212ee8b3b28d79f7aa11e790d517bee0f10"
+    },
+    {
+      "path": "data/gsm8k/processed/sft_validation.jsonl",
+      "bytes": 688338,
+      "sha256": "30d1808b274a1b150831db1a0600f2e74196bb66903d27f9320d11a1ae9cc891"
+    },
+    {
+      "path": "data/gsm8k/raw/README.upstream.md",
+      "bytes": 7935,
+      "sha256": "a17e882503578c9e324560630e31017617714ee025c87cf4fea6fd916895f3c1"
+    },
+    {
+      "path": "data/gsm8k/raw/source.json",
+      "bytes": 843,
+      "sha256": "4707ad1f28957862b885b12121ed69a257fe1494eaa497ea539f8c0ac80e6715"
+    },
+    {
+      "path": "data/gsm8k/raw/test-00000-of-00001.parquet",
+      "bytes": 419088,
+      "sha256": "ee7b8da9e381df27b9e3f7758a159ab2bdaa4dbaa910546cbbc47e0cb44e4f59"
+    },
+    {
+      "path": "data/gsm8k/raw/train-00000-of-00001.parquet",
+      "bytes": 2306545,
+      "sha256": "ea82612ea9582142387730c793eb67d3b12849002bc0b7fa6f8efafa7351419d"
+    },
+    {
+      "path": "data/gsm8k/splits/rl_train.jsonl",
+      "bytes": 1329407,
+      "sha256": "6186da1fb29a2e52df9f54e5217e4b0e5e380003d12e5ac3c1b816b9ad9114f8"
+    },
+    {
+      "path": "data/gsm8k/splits/sft_train.jsonl",
+      "bytes": 3409737,
+      "sha256": "378c4aaeffebb3030a107870cebfd746716c9241229fbbd0f0ad642a7825e9d6"
+    },
+    {
+      "path": "data/gsm8k/splits/test.jsonl",
+      "bytes": 908185,
+      "sha256": "3d9971d4545b07739f108972310a0a389a4b19b58596d2095eb6872a4ddc33a2"
+    },
+    {
+      "path": "data/gsm8k/splits/validation.jsonl",
+      "bytes": 345542,
+      "sha256": "e83b97e0ba579b53e6ff0375cca3683f62e3f388318efc30ae36b2a897194f1c"
+    },
+    {
+      "path": "scripts/prepare_gsm8k.py",
+      "bytes": 15611,
+      "sha256": "539de531fc38448c2b64c32f01a35c78e2daf883a6bb60b0e8f34fab8723dc1c"
+    },
+    {
+      "path": "reports/gsm8k_data_checks.json",
+      "bytes": 1390,
+      "sha256": "f67e2088eea4e829cc4016e3ec73aa67a1c3de20ddfd2e0c319bdf23d6b3c391"
+    }
+  ]
+}

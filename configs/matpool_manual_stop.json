@@ -1,0 +1,4 @@
+{
+  "mode": "disabled",
+  "reason": "User will manually pause the GPU; no stop/release API may be called."
+}

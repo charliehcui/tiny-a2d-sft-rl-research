@@ -1,0 +1,772 @@
+{
+  "results": {
+    "gsm8k_bluewhale_xml_validation": {
+      "alias": "gsm8k_bluewhale_xml_validation",
+      "exact_match,xml-answer": 0.125,
+      "exact_match_stderr,xml-answer": "N/A",
+      "exact_match,flexible-extract": 0.375,
+      "exact_match_stderr,flexible-extract": "N/A"
+    }
+  },
+  "group_subtasks": {
+    "gsm8k_bluewhale_xml_validation": []
+  },
+  "configs": {
+    "gsm8k_bluewhale_xml_validation": {
+      "task": "gsm8k_bluewhale_xml_validation",
+      "dataset_path": "json",
+      "dataset_kwargs": {
+        "data_files": {
+          "validation": "/mnt/bluewhale/data/gsm8k/splits/validation.jsonl",
+          "test": "/mnt/bluewhale/data/gsm8k/splits/test.jsonl"
+        }
+      },
+      "validation_split": "validation",
+      "test_split": "validation",
+      "doc_to_text": "\nRespond in the following format:\n<reasoning>\n...\n</reasoning>\n<answer>\n...\n</answer>\n\n\n{{question}}",
+      "doc_to_target": "{{answer_value}}",
+      "unsafe_code": false,
+      "description": "",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "num_fewshot": 0,
+      "metric_list": [
+        {
+          "metric": "exact_match",
+          "aggregation": "mean",
+          "higher_is_better": true,
+          "ignore_case": true,
+          "ignore_punctuation": false,
+          "regexes_to_ignore": [
+            ",",
+            "\\$",
+            "\\.$"
+          ]
+        }
+      ],
+      "output_type": "generate_until",
+      "generation_kwargs": {
+        "until": [
+          "<|im_end|>"
+        ]
+      },
+      "repeats": 1,
+      "filter_list": [
+        {
+          "name": "xml-answer",
+          "filter": [
+            {
+              "function": "regex",
+              "regex_pattern": "(?s)<answer>\\s*([-+]?[0-9][0-9,]*(?:\\.[0-9]+)?)\\s*</answer>",
+              "group_select": -1
+            },
+            {
+              "function": "take_first"
+            }
+          ]
+        },
+        {
+          "name": "flexible-extract",
+          "filter": [
+            {
+              "function": "regex",
+              "regex_pattern": "(-?[$0-9.,]{2,})|(-?[0-9]+)",
+              "group_select": -1
+            },
+            {
+              "function": "take_first"
+            }
+          ]
+        }
+      ],
+      "should_decontaminate": false,
+      "metadata": {
+        "version": 1,
+        "source_dataset": "openai/gsm8k",
+        "source_config": "main",
+        "source_revision": "740312add88f781978c0658806c59bc2815b9866",
+        "protocol": "Official test questions with shared zero-shot XML prompt; not the published 8-shot gsm8k_cot protocol."
+      }
+    }
+  },
+  "versions": {
+    "gsm8k_bluewhale_xml_validation": 1
+  },
+  "n-shot": {
+    "gsm8k_bluewhale_xml_validation": 0
+  },
+  "higher_is_better": {
+    "gsm8k_bluewhale_xml_validation": {
+      "exact_match": true
+    }
+  },
+  "n-samples": {
+    "gsm8k_bluewhale_xml_validation": {
+      "original": 500,
+      "effective": 8
+    }
+  },
+  "samples": {
+    "gsm8k_bluewhale_xml_validation": [
+      {
+        "doc_id": 0,
+        "doc": {
+          "id": "gsm8k-main-train-00034",
+          "source_split": "train",
+          "source_index": 34,
+          "question": "Mr. Sam shared a certain amount of money between his two sons, Ken and Tony. If Ken got $1750, and Tony got twice as much as Ken, how much was the money shared?",
+          "answer": "Tony got twice $1750 which is 2*$1750 = $<<2*1750=3500>>3500\nThe total amount shared was $1750+$3500 = $<<1750+3500=5250>>5250\n#### 5250",
+          "final_answer": "5250",
+          "answer_value": "5250"
+        },
+        "target": "5250",
+        "arguments": [
+          [
+            "<|im_start|>user\n\nRespond in the following format:\n<reasoning>\n...\n</reasoning>\n<answer>\n...\n</answer>\n\n\nMr. Sam shared a certain amount of money between his two sons, Ken and Tony. If Ken got $1750, and Tony got twice as much as Ken, how much was the money shared?<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+            {
+              "until": [
+                "<|im_end|>"
+              ]
+            }
+          ]
+        ],
+        "resps": [
+          [
+            "<reasoning>\nTony got 2 * $1750 = $3500. The total amount is $1750 + $3500 = $5250.\n</answer>"
+          ]
+        ],
+        "filtered_resps": [
+          "[invalid]"
+        ],
+        "filter": "xml-answer",
+        "metrics": [
+          "exact_match"
+        ],
+        "doc_hash": "9bafc4535bc95ea1d43b2a7f158adf4a2f4a09387649a44d6eb175b1086ade46",
+        "prompt_hash": "df4da69e36558f0d470e90ea3f824f5e45d450cd46a443f042849f84a03faac1",
+        "target_hash": "2841dad7e57a80b5a9fdc7cd5799e7108f394e1c6157a8feb8e83db0808d3432",
+        "exact_match": 0.0
+      },
+      {
+        "doc_id": 1,
+        "doc": {
+          "id": "gsm8k-main-train-00041",
+          "source_split": "train",
+          "source_index": 41,
+          "question": "Rachel and Sara want to attend a beauty and modeling contest. They both want to buy new pairs of shoes and dresses. Sara buys a pair of shoes which costs $50 and a dress which costs $200. How much should Rachel budget if she wants to spend twice as much as what Sara spent on the pair of shoes and dress?",
+          "answer": "The cost Rachel should budget for her pair of shoes is $50 * 2 = $<<50*2=100>>100.\nThe cost Rachel should budget for her dress is $200 * 2 = $<<200*2=400>>400.\nThe total Rachel should budget is $100 + $400 = $<<100+400=500>>500.\n#### 500",
+          "final_answer": "500",
+          "answer_value": "500"
+        },
+        "target": "500",
+        "arguments": [
+          [
+            "<|im_start|>user\n\nRespond in the following format:\n<reasoning>\n...\n</reasoning>\n<answer>\n...\n</answer>\n\n\nRachel and Sara want to attend a beauty and modeling contest. They both want to buy new pairs of shoes and dresses. Sara buys a pair of shoes which costs $50 and a dress which costs $200. How much should Rachel budget if she wants to spend twice as much as what Sara spent on the pair of shoes and dress?<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+            {
+              "until": [
+                "<|im_end|>"
+              ]
+            }
+          ]
+        ],
+        "resps": [
+          [
+            "<reasoning>\nSara spent $50 + $200 = $250. Rachel wants to spend twice as much as Sara spent, so she should budget $250 * 2 = $500.\n</answer>"
+          ]
+        ],
+        "filtered_resps": [
+          "[invalid]"
+        ],
+        "filter": "xml-answer",
+        "metrics": [
+          "exact_match"
+        ],
+        "doc_hash": "8333370df9511d2671d849ff18dc81f44df028de75067b8f045178d8b0d98fff",
+        "prompt_hash": "5a4572a459e103d31f57610cb2f2a2ce854baffc91619633e68dc7c55ce479c5",
+        "target_hash": "0604cd3138feed202ef293e062da2f4720f77a05d25ee036a7a01c9cfcdd1f0a",
+        "exact_match": 0.0
+      },
+      {
+        "doc_id": 2,
+        "doc": {
+          "id": "gsm8k-main-train-00044",
+          "source_split": "train",
+          "source_index": 44,
+          "question": "James is a first-year student at a University in Chicago. He has a budget of $1000 per semester. He spends 30% of his money on food, 15% on accommodation, 25% on entertainment, and the rest on coursework materials. How much money does he spend on coursework materials?",
+          "answer": "Accommodation is 15% * $1000=$<<15*.01*1000=150>>150\nFood is          30% * $1000=$<<30*.01*1000=300>>300\nEntertainment is   25% * $1000=$<<25*.01*1000=250>>250\nCoursework materials are thus $1000-($150+$300+$250) = $300\n#### 300",
+          "final_answer": "300",
+          "answer_value": "300"
+        },
+        "target": "300",
+        "arguments": [
+          [
+            "<|im_start|>user\n\nRespond in the following format:\n<reasoning>\n...\n</reasoning>\n<answer>\n...\n</answer>\n\n\nJames is a first-year student at a University in Chicago. He has a budget of $1000 per semester. He spends 30% of his money on food, 15% on accommodation, 25% on entertainment, and the rest on coursework materials. How much money does he spend on coursework materials?<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+            {
+              "until": [
+                "<|im_end|>"
+              ]
+            }
+          ]
+        ],
+        "resps": [
+          [
+            "<reasoning>\nHe spends 30% of $1000 = $300 on coursework materials.\n</reasoning>\n<answer>300</answer>"
+          ]
+        ],
+        "filtered_resps": [
+          "300"
+        ],
+        "filter": "xml-answer",
+        "metrics": [
+          "exact_match"
+        ],
+        "doc_hash": "d8e5d41b125ee4a4d387a60da86466fb254818e8146de28a33c4c698c588b593",
+        "prompt_hash": "0a0dcdec699c39a01d90ca310e2e24476d7e0d100b31897d31c009a6f968bf14",
+        "target_hash": "983bd614bb5afece5ab3b6023f71147cd7b6bc2314f9d27af7422541c6558389",
+        "exact_match": 1.0
+      },
+      {
+        "doc_id": 3,
+        "doc": {
+          "id": "gsm8k-main-train-00059",
+          "source_split": "train",
+          "source_index": 59,
+          "question": "Every hour Joanne has to collect the coins out of the fountain inside the mall. During the first hour, she collected 15 coins. For the next two hours, she collected 35 coins from the fountain. In the fourth hour, she collected 50 coins from the fountain but she gave 15 of them to her coworker so she could buy a soda. How many coins did she have after the fourth hour?",
+          "answer": "15 coins collected in hour one\n35 coins collected in hour two\n35 coins collected in hour three\n50 coins collected in hour four\nBefore giving her coworker some coins there were 15+35+35+50=<<15+35+35+50=135>>135 coins\nThe number of coins after given 15 to her coworker is 135-15=<<135-15=120>>120\n#### 120",
+          "final_answer": "120",
+          "answer_value": "120"
+        },
+        "target": "120",
+        "arguments": [
+          [
+            "<|im_start|>user\n\nRespond in the following format:\n<reasoning>\n...\n</reasoning>\n<answer>\n...\n</answer>\n\n\nEvery hour Joanne has to collect the coins out of the fountain inside the mall. During the first hour, she collected 15 coins. For the next two hours, she collected 35 coins from the fountain. In the fourth hour, she collected 50 coins from the fountain but she gave 15 of them to her coworker so she could buy a soda. How many coins did she have after the fourth hour?<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+            {
+              "until": [
+                "<|im_end|>"
+              ]
+            }
+          ]
+        ],
+        "resps": [
+          [
+            "<reasoning>\nJoanne had 15 + 35 + 50 - 15 = 95 coins after the fourth hour.\n</reasoning>\n<answer>\n95"
+          ]
+        ],
+        "filtered_resps": [
+          "[invalid]"
+        ],
+        "filter": "xml-answer",
+        "metrics": [
+          "exact_match"
+        ],
+        "doc_hash": "943dfc2489d9f7fa8a368d786b5bcc939d32845c72f9026e48a78ac0ec25ff68",
+        "prompt_hash": "ba5e383be23f51f193e720f1c98ef4a0dfa45f302d523d4ba6505b3810159faa",
+        "target_hash": "2abaca4911e68fa9bfbf3482ee797fd5b9045b841fdff7253557c5fe15de6477",
+        "exact_match": 0.0
+      },
+      {
+        "doc_id": 4,
+        "doc": {
+          "id": "gsm8k-main-train-00065",
+          "source_split": "train",
+          "source_index": 65,
+          "question": "Lee mows one lawn and charges $33. Last week he mowed 16 lawns and three customers each gave him a $10 tip. How many dollars did Lee earn mowing lawns last week?",
+          "answer": "33 * 16 = $<<33*16=528>>528\n3 * 10 = $<<3*10=30>>30\n528 + 30 = $<<528+30=558>>558\nLee earned $558 mowing lawns last week.\n#### 558",
+          "final_answer": "558",
+          "answer_value": "558"
+        },
+        "target": "558",
+        "arguments": [
+          [
+            "<|im_start|>user\n\nRespond in the following format:\n<reasoning>\n...\n</reasoning>\n<answer>\n...\n</answer>\n\n\nLee mows one lawn and charges $33. Last week he mowed 16 lawns and three customers each gave him a $10 tip. How many dollars did Lee earn mowing lawns last week?<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+            {
+              "until": [
+                "<|im_end|>"
+              ]
+            }
+          ]
+        ],
+        "resps": [
+          [
+            "<reasoning>\nTo find out how much Lee earned mowing lawns last week, we need to calculate the total amount he earned from mowing lawns and tips."
+          ]
+        ],
+        "filtered_resps": [
+          "[invalid]"
+        ],
+        "filter": "xml-answer",
+        "metrics": [
+          "exact_match"
+        ],
+        "doc_hash": "4f7251ad9b95427bedc77b203217716390a68e4d5770591f89d27c512169702e",
+        "prompt_hash": "632653563f28cddd3a9ed9926c38e0d2259dee4bcfe887cb95945227b5976e0f",
+        "target_hash": "dd8e8c8c9dae8978f122d7bcf3d0d49f6a0e86b9fc35528f55e78f7408927bb1",
+        "exact_match": 0.0
+      },
+      {
+        "doc_id": 5,
+        "doc": {
+          "id": "gsm8k-main-train-00073",
+          "source_split": "train",
+          "source_index": 73,
+          "question": "It is Roger’s turn to provide a snack for the baseball team after the game and he has decided to bring trail mix. The trail mix comes in packs of 6 individual pouches. Roger has 13 members on his baseball team, plus 3 coaches and 2 helpers. How many packs of trail mix does he need to buy?",
+          "answer": "Roger will need 13 + 3 + 2 = <<13+3+2=18>>18 pouches of trail mix.\nIf you divide the amount of trail mix pouches by the amount in each pack, 18 / 6 = <<18/6=3>>3 packs of trail mix.\n#### 3",
+          "final_answer": "3",
+          "answer_value": "3"
+        },
+        "target": "3",
+        "arguments": [
+          [
+            "<|im_start|>user\n\nRespond in the following format:\n<reasoning>\n...\n</reasoning>\n<answer>\n...\n</answer>\n\n\nIt is Roger’s turn to provide a snack for the baseball team after the game and he has decided to bring trail mix. The trail mix comes in packs of 6 individual pouches. Roger has 13 members on his baseball team, plus 3 coaches and 2 helpers. How many packs of trail mix does he need to buy?<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+            {
+              "until": [
+                "<|im_end|>"
+              ]
+            }
+          ]
+        ],
+        "resps": [
+          [
+            "<reasoning>\n2"
+          ]
+        ],
+        "filtered_resps": [
+          "[invalid]"
+        ],
+        "filter": "xml-answer",
+        "metrics": [
+          "exact_match"
+        ],
+        "doc_hash": "4f7e3e16852df27ea29a4166de8150f2f256e8d64fa4db80b33e62993b69577b",
+        "prompt_hash": "47e856b94b1f9c301065ef507d592f1b2a20f4aa013655d9c05a1520d296e344",
+        "target_hash": "4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce",
+        "exact_match": 0.0
+      },
+      {
+        "doc_id": 6,
+        "doc": {
+          "id": "gsm8k-main-train-00076",
+          "source_split": "train",
+          "source_index": 76,
+          "question": "A garden produced 237 potatoes, 60 fewer cucumbers and twice as many peppers than the cucumbers. How many vegetables did the garden produce?",
+          "answer": "The garden produced 237 potatoes - 60 = <<237-60=177>>177 cucumbers.\nThe garden produced 177 cucumbers * 2 peppers/cucumber = <<177*2=354>>354 peppers.\nThe garden produced 237 potatoes + 177 cucumbers + 354 peppers = <<237+177+354=768>>768 vegetables.\n#### 768",
+          "final_answer": "768",
+          "answer_value": "768"
+        },
+        "target": "768",
+        "arguments": [
+          [
+            "<|im_start|>user\n\nRespond in the following format:\n<reasoning>\n...\n</reasoning>\n<answer>\n...\n</answer>\n\n\nA garden produced 237 potatoes, 60 fewer cucumbers and twice as many peppers than the cucumbers. How many vegetables did the garden produce?<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+            {
+              "until": [
+                "<|im_end|>"
+              ]
+            }
+          ]
+        ],
+        "resps": [
+          [
+            "<reasoning>\nThe garden produced 237 potatoes, 60 fewer cucumbers, and twice as many peppers as the cucumbers. The total number of vegetables produced is 237 + 77 + 154 = 35"
+          ]
+        ],
+        "filtered_resps": [
+          "[invalid]"
+        ],
+        "filter": "xml-answer",
+        "metrics": [
+          "exact_match"
+        ],
+        "doc_hash": "4a8d55ad774cbce2434261c42a12af20b3b08c94d5a5b6796b8943429613c600",
+        "prompt_hash": "e6d9f8a2ac165262b3173ca02334d5001ee58eebf94a337db16200278e599e02",
+        "target_hash": "f7b856c054de7ccced087ad4f9413380ec494e40abc818b840aaad990ca3c5bc",
+        "exact_match": 0.0
+      },
+      {
+        "doc_id": 7,
+        "doc": {
+          "id": "gsm8k-main-train-00089",
+          "source_split": "train",
+          "source_index": 89,
+          "question": "Krystian works in the library. He borrows an average of 40 books every day. Every Friday, his number of borrowed books is about 40% higher than the daily average. How many books does he borrow in a week if the library is open from Monday to Friday?",
+          "answer": "The number of books borrowed on Friday is higher by 40 * 40/100 = <<40*40/100=16>>16 books.\nThere are 5 days from Monday to Friday inclusive, so Krystian borrows an average of 5 * 40 = <<5*40=200>>200 books during that time.\nWith Friday's increase in borrowings, during one week Krystian borrows 200 + 16 = <<200+16=216>>216 books.\n#### 216",
+          "final_answer": "216",
+          "answer_value": "216"
+        },
+        "target": "216",
+        "arguments": [
+          [
+            "<|im_start|>user\n\nRespond in the following format:\n<reasoning>\n...\n</reasoning>\n<answer>\n...\n</answer>\n\n\nKrystian works in the library. He borrows an average of 40 books every day. Every Friday, his number of borrowed books is about 40% higher than the daily average. How many books does he borrow in a week if the library is open from Monday to Friday?<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+            {
+              "until": [
+                "<|im_end|>"
+              ]
+            }
+          ]
+        ],
+        "resps": [
+          [
+            "<reasoning>\nKrystian borrows 40 + 40 = 80 books on Friday.\n</answer>\n480"
+          ]
+        ],
+        "filtered_resps": [
+          "[invalid]"
+        ],
+        "filter": "xml-answer",
+        "metrics": [
+          "exact_match"
+        ],
+        "doc_hash": "f867ccc41884fb51171016a661a7de827ec2affd6bcb3401ea14bcb6fff59ade",
+        "prompt_hash": "1e81851923fa56e26b3a7f49412961b9bb021803cd6cfdf033efc0fc33e9075c",
+        "target_hash": "0f4121d0ef1df4c86854c7ebb47ae1c93de8aec8f944035eeaa6495dd71a0678",
+        "exact_match": 0.0
+      },
+      {
+        "doc_id": 0,
+        "doc": {
+          "id": "gsm8k-main-train-00034",
+          "source_split": "train",
+          "source_index": 34,
+          "question": "Mr. Sam shared a certain amount of money between his two sons, Ken and Tony. If Ken got $1750, and Tony got twice as much as Ken, how much was the money shared?",
+          "answer": "Tony got twice $1750 which is 2*$1750 = $<<2*1750=3500>>3500\nThe total amount shared was $1750+$3500 = $<<1750+3500=5250>>5250\n#### 5250",
+          "final_answer": "5250",
+          "answer_value": "5250"
+        },
+        "target": "5250",
+        "arguments": [
+          [
+            "<|im_start|>user\n\nRespond in the following format:\n<reasoning>\n...\n</reasoning>\n<answer>\n...\n</answer>\n\n\nMr. Sam shared a certain amount of money between his two sons, Ken and Tony. If Ken got $1750, and Tony got twice as much as Ken, how much was the money shared?<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+            {
+              "until": [
+                "<|im_end|>"
+              ]
+            }
+          ]
+        ],
+        "resps": [
+          [
+            "<reasoning>\nTony got 2 * $1750 = $3500. The total amount is $1750 + $3500 = $5250.\n</answer>"
+          ]
+        ],
+        "filtered_resps": [
+          "$5250."
+        ],
+        "filter": "flexible-extract",
+        "metrics": [
+          "exact_match"
+        ],
+        "doc_hash": "9bafc4535bc95ea1d43b2a7f158adf4a2f4a09387649a44d6eb175b1086ade46",
+        "prompt_hash": "df4da69e36558f0d470e90ea3f824f5e45d450cd46a443f042849f84a03faac1",
+        "target_hash": "2841dad7e57a80b5a9fdc7cd5799e7108f394e1c6157a8feb8e83db0808d3432",
+        "exact_match": 1.0
+      },
+      {
+        "doc_id": 1,
+        "doc": {
+          "id": "gsm8k-main-train-00041",
+          "source_split": "train",
+          "source_index": 41,
+          "question": "Rachel and Sara want to attend a beauty and modeling contest. They both want to buy new pairs of shoes and dresses. Sara buys a pair of shoes which costs $50 and a dress which costs $200. How much should Rachel budget if she wants to spend twice as much as what Sara spent on the pair of shoes and dress?",
+          "answer": "The cost Rachel should budget for her pair of shoes is $50 * 2 = $<<50*2=100>>100.\nThe cost Rachel should budget for her dress is $200 * 2 = $<<200*2=400>>400.\nThe total Rachel should budget is $100 + $400 = $<<100+400=500>>500.\n#### 500",
+          "final_answer": "500",
+          "answer_value": "500"
+        },
+        "target": "500",
+        "arguments": [
+          [
+            "<|im_start|>user\n\nRespond in the following format:\n<reasoning>\n...\n</reasoning>\n<answer>\n...\n</answer>\n\n\nRachel and Sara want to attend a beauty and modeling contest. They both want to buy new pairs of shoes and dresses. Sara buys a pair of shoes which costs $50 and a dress which costs $200. How much should Rachel budget if she wants to spend twice as much as what Sara spent on the pair of shoes and dress?<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+            {
+              "until": [
+                "<|im_end|>"
+              ]
+            }
+          ]
+        ],
+        "resps": [
+          [
+            "<reasoning>\nSara spent $50 + $200 = $250. Rachel wants to spend twice as much as Sara spent, so she should budget $250 * 2 = $500.\n</answer>"
+          ]
+        ],
+        "filtered_resps": [
+          "$500."
+        ],
+        "filter": "flexible-extract",
+        "metrics": [
+          "exact_match"
+        ],
+        "doc_hash": "8333370df9511d2671d849ff18dc81f44df028de75067b8f045178d8b0d98fff",
+        "prompt_hash": "5a4572a459e103d31f57610cb2f2a2ce854baffc91619633e68dc7c55ce479c5",
+        "target_hash": "0604cd3138feed202ef293e062da2f4720f77a05d25ee036a7a01c9cfcdd1f0a",
+        "exact_match": 1.0
+      },
+      {
+        "doc_id": 2,
+        "doc": {
+          "id": "gsm8k-main-train-00044",
+          "source_split": "train",
+          "source_index": 44,
+          "question": "James is a first-year student at a University in Chicago. He has a budget of $1000 per semester. He spends 30% of his money on food, 15% on accommodation, 25% on entertainment, and the rest on coursework materials. How much money does he spend on coursework materials?",
+          "answer": "Accommodation is 15% * $1000=$<<15*.01*1000=150>>150\nFood is          30% * $1000=$<<30*.01*1000=300>>300\nEntertainment is   25% * $1000=$<<25*.01*1000=250>>250\nCoursework materials are thus $1000-($150+$300+$250) = $300\n#### 300",
+          "final_answer": "300",
+          "answer_value": "300"
+        },
+        "target": "300",
+        "arguments": [
+          [
+            "<|im_start|>user\n\nRespond in the following format:\n<reasoning>\n...\n</reasoning>\n<answer>\n...\n</answer>\n\n\nJames is a first-year student at a University in Chicago. He has a budget of $1000 per semester. He spends 30% of his money on food, 15% on accommodation, 25% on entertainment, and the rest on coursework materials. How much money does he spend on coursework materials?<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+            {
+              "until": [
+                "<|im_end|>"
+              ]
+            }
+          ]
+        ],
+        "resps": [
+          [
+            "<reasoning>\nHe spends 30% of $1000 = $300 on coursework materials.\n</reasoning>\n<answer>300</answer>"
+          ]
+        ],
+        "filtered_resps": [
+          "300"
+        ],
+        "filter": "flexible-extract",
+        "metrics": [
+          "exact_match"
+        ],
+        "doc_hash": "d8e5d41b125ee4a4d387a60da86466fb254818e8146de28a33c4c698c588b593",
+        "prompt_hash": "0a0dcdec699c39a01d90ca310e2e24476d7e0d100b31897d31c009a6f968bf14",
+        "target_hash": "983bd614bb5afece5ab3b6023f71147cd7b6bc2314f9d27af7422541c6558389",
+        "exact_match": 1.0
+      },
+      {
+        "doc_id": 3,
+        "doc": {
+          "id": "gsm8k-main-train-00059",
+          "source_split": "train",
+          "source_index": 59,
+          "question": "Every hour Joanne has to collect the coins out of the fountain inside the mall. During the first hour, she collected 15 coins. For the next two hours, she collected 35 coins from the fountain. In the fourth hour, she collected 50 coins from the fountain but she gave 15 of them to her coworker so she could buy a soda. How many coins did she have after the fourth hour?",
+          "answer": "15 coins collected in hour one\n35 coins collected in hour two\n35 coins collected in hour three\n50 coins collected in hour four\nBefore giving her coworker some coins there were 15+35+35+50=<<15+35+35+50=135>>135 coins\nThe number of coins after given 15 to her coworker is 135-15=<<135-15=120>>120\n#### 120",
+          "final_answer": "120",
+          "answer_value": "120"
+        },
+        "target": "120",
+        "arguments": [
+          [
+            "<|im_start|>user\n\nRespond in the following format:\n<reasoning>\n...\n</reasoning>\n<answer>\n...\n</answer>\n\n\nEvery hour Joanne has to collect the coins out of the fountain inside the mall. During the first hour, she collected 15 coins. For the next two hours, she collected 35 coins from the fountain. In the fourth hour, she collected 50 coins from the fountain but she gave 15 of them to her coworker so she could buy a soda. How many coins did she have after the fourth hour?<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+            {
+              "until": [
+                "<|im_end|>"
+              ]
+            }
+          ]
+        ],
+        "resps": [
+          [
+            "<reasoning>\nJoanne had 15 + 35 + 50 - 15 = 95 coins after the fourth hour.\n</reasoning>\n<answer>\n95"
+          ]
+        ],
+        "filtered_resps": [
+          "95"
+        ],
+        "filter": "flexible-extract",
+        "metrics": [
+          "exact_match"
+        ],
+        "doc_hash": "943dfc2489d9f7fa8a368d786b5bcc939d32845c72f9026e48a78ac0ec25ff68",
+        "prompt_hash": "ba5e383be23f51f193e720f1c98ef4a0dfa45f302d523d4ba6505b3810159faa",
+        "target_hash": "2abaca4911e68fa9bfbf3482ee797fd5b9045b841fdff7253557c5fe15de6477",
+        "exact_match": 0.0
+      },
+      {
+        "doc_id": 4,
+        "doc": {
+          "id": "gsm8k-main-train-00065",
+          "source_split": "train",
+          "source_index": 65,
+          "question": "Lee mows one lawn and charges $33. Last week he mowed 16 lawns and three customers each gave him a $10 tip. How many dollars did Lee earn mowing lawns last week?",
+          "answer": "33 * 16 = $<<33*16=528>>528\n3 * 10 = $<<3*10=30>>30\n528 + 30 = $<<528+30=558>>558\nLee earned $558 mowing lawns last week.\n#### 558",
+          "final_answer": "558",
+          "answer_value": "558"
+        },
+        "target": "558",
+        "arguments": [
+          [
+            "<|im_start|>user\n\nRespond in the following format:\n<reasoning>\n...\n</reasoning>\n<answer>\n...\n</answer>\n\n\nLee mows one lawn and charges $33. Last week he mowed 16 lawns and three customers each gave him a $10 tip. How many dollars did Lee earn mowing lawns last week?<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+            {
+              "until": [
+                "<|im_end|>"
+              ]
+            }
+          ]
+        ],
+        "resps": [
+          [
+            "<reasoning>\nTo find out how much Lee earned mowing lawns last week, we need to calculate the total amount he earned from mowing lawns and tips."
+          ]
+        ],
+        "filtered_resps": [
+          "[invalid]"
+        ],
+        "filter": "flexible-extract",
+        "metrics": [
+          "exact_match"
+        ],
+        "doc_hash": "4f7251ad9b95427bedc77b203217716390a68e4d5770591f89d27c512169702e",
+        "prompt_hash": "632653563f28cddd3a9ed9926c38e0d2259dee4bcfe887cb95945227b5976e0f",
+        "target_hash": "dd8e8c8c9dae8978f122d7bcf3d0d49f6a0e86b9fc35528f55e78f7408927bb1",
+        "exact_match": 0.0
+      },
+      {
+        "doc_id": 5,
+        "doc": {
+          "id": "gsm8k-main-train-00073",
+          "source_split": "train",
+          "source_index": 73,
+          "question": "It is Roger’s turn to provide a snack for the baseball team after the game and he has decided to bring trail mix. The trail mix comes in packs of 6 individual pouches. Roger has 13 members on his baseball team, plus 3 coaches and 2 helpers. How many packs of trail mix does he need to buy?",
+          "answer": "Roger will need 13 + 3 + 2 = <<13+3+2=18>>18 pouches of trail mix.\nIf you divide the amount of trail mix pouches by the amount in each pack, 18 / 6 = <<18/6=3>>3 packs of trail mix.\n#### 3",
+          "final_answer": "3",
+          "answer_value": "3"
+        },
+        "target": "3",
+        "arguments": [
+          [
+            "<|im_start|>user\n\nRespond in the following format:\n<reasoning>\n...\n</reasoning>\n<answer>\n...\n</answer>\n\n\nIt is Roger’s turn to provide a snack for the baseball team after the game and he has decided to bring trail mix. The trail mix comes in packs of 6 individual pouches. Roger has 13 members on his baseball team, plus 3 coaches and 2 helpers. How many packs of trail mix does he need to buy?<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+            {
+              "until": [
+                "<|im_end|>"
+              ]
+            }
+          ]
+        ],
+        "resps": [
+          [
+            "<reasoning>\n2"
+          ]
+        ],
+        "filtered_resps": [
+          "2"
+        ],
+        "filter": "flexible-extract",
+        "metrics": [
+          "exact_match"
+        ],
+        "doc_hash": "4f7e3e16852df27ea29a4166de8150f2f256e8d64fa4db80b33e62993b69577b",
+        "prompt_hash": "47e856b94b1f9c301065ef507d592f1b2a20f4aa013655d9c05a1520d296e344",
+        "target_hash": "4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce",
+        "exact_match": 0.0
+      },
+      {
+        "doc_id": 6,
+        "doc": {
+          "id": "gsm8k-main-train-00076",
+          "source_split": "train",
+          "source_index": 76,
+          "question": "A garden produced 237 potatoes, 60 fewer cucumbers and twice as many peppers than the cucumbers. How many vegetables did the garden produce?",
+          "answer": "The garden produced 237 potatoes - 60 = <<237-60=177>>177 cucumbers.\nThe garden produced 177 cucumbers * 2 peppers/cucumber = <<177*2=354>>354 peppers.\nThe garden produced 237 potatoes + 177 cucumbers + 354 peppers = <<237+177+354=768>>768 vegetables.\n#### 768",
+          "final_answer": "768",
+          "answer_value": "768"
+        },
+        "target": "768",
+        "arguments": [
+          [
+            "<|im_start|>user\n\nRespond in the following format:\n<reasoning>\n...\n</reasoning>\n<answer>\n...\n</answer>\n\n\nA garden produced 237 potatoes, 60 fewer cucumbers and twice as many peppers than the cucumbers. How many vegetables did the garden produce?<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+            {
+              "until": [
+                "<|im_end|>"
+              ]
+            }
+          ]
+        ],
+        "resps": [
+          [
+            "<reasoning>\nThe garden produced 237 potatoes, 60 fewer cucumbers, and twice as many peppers as the cucumbers. The total number of vegetables produced is 237 + 77 + 154 = 35"
+          ]
+        ],
+        "filtered_resps": [
+          "35"
+        ],
+        "filter": "flexible-extract",
+        "metrics": [
+          "exact_match"
+        ],
+        "doc_hash": "4a8d55ad774cbce2434261c42a12af20b3b08c94d5a5b6796b8943429613c600",
+        "prompt_hash": "e6d9f8a2ac165262b3173ca02334d5001ee58eebf94a337db16200278e599e02",
+        "target_hash": "f7b856c054de7ccced087ad4f9413380ec494e40abc818b840aaad990ca3c5bc",
+        "exact_match": 0.0
+      },
+      {
+        "doc_id": 7,
+        "doc": {
+          "id": "gsm8k-main-train-00089",
+          "source_split": "train",
+          "source_index": 89,
+          "question": "Krystian works in the library. He borrows an average of 40 books every day. Every Friday, his number of borrowed books is about 40% higher than the daily average. How many books does he borrow in a week if the library is open from Monday to Friday?",
+          "answer": "The number of books borrowed on Friday is higher by 40 * 40/100 = <<40*40/100=16>>16 books.\nThere are 5 days from Monday to Friday inclusive, so Krystian borrows an average of 5 * 40 = <<5*40=200>>200 books during that time.\nWith Friday's increase in borrowings, during one week Krystian borrows 200 + 16 = <<200+16=216>>216 books.\n#### 216",
+          "final_answer": "216",
+          "answer_value": "216"
+        },
+        "target": "216",
+        "arguments": [
+          [
+            "<|im_start|>user\n\nRespond in the following format:\n<reasoning>\n...\n</reasoning>\n<answer>\n...\n</answer>\n\n\nKrystian works in the library. He borrows an average of 40 books every day. Every Friday, his number of borrowed books is about 40% higher than the daily average. How many books does he borrow in a week if the library is open from Monday to Friday?<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+            {
+              "until": [
+                "<|im_end|>"
+              ]
+            }
+          ]
+        ],
+        "resps": [
+          [
+            "<reasoning>\nKrystian borrows 40 + 40 = 80 books on Friday.\n</answer>\n480"
+          ]
+        ],
+        "filtered_resps": [
+          "480"
+        ],
+        "filter": "flexible-extract",
+        "metrics": [
+          "exact_match"
+        ],
+        "doc_hash": "f867ccc41884fb51171016a661a7de827ec2affd6bcb3401ea14bcb6fff59ade",
+        "prompt_hash": "1e81851923fa56e26b3a7f49412961b9bb021803cd6cfdf033efc0fc33e9075c",
+        "target_hash": "0f4121d0ef1df4c86854c7ebb47ae1c93de8aec8f944035eeaa6495dd71a0678",
+        "exact_match": 0.0
+      }
+    ]
+  },
+  "config": {
+    "model": "MDLMEvalHarness",
+    "model_args": null,
+    "batch_size": 8,
+    "batch_sizes": [],
+    "device": null,
+    "use_cache": null,
+    "limit": 8,
+    "bootstrap_iters": 0,
+    "gen_kwargs": null,
+    "random_seed": 42,
+    "numpy_seed": 42,
+    "torch_seed": 42,
+    "fewshot_seed": 42
+  },
+  "git_hash": null,
+  "date": 1793706138.5937517,
+  "pretty_env_info": "PyTorch version: 2.6.0+cu124\nIs debug build: False\nCUDA used to build PyTorch: 12.4\nROCM used to build PyTorch: N/A\n\nOS: Ubuntu 20.04.6 LTS (x86_64)\nGCC version: Could not collect\nClang version: Could not collect\nCMake version: Could not collect\nLibc version: glibc-2.31\n\nPython version: 3.11.18 (main, Oct 26 2026, 18:19:35) [GCC 14.3.0] (64-bit runtime)\nPython platform: Linux-6.1.0-0.deb11.21-amd64-x86_64-with-glibc2.31\nIs CUDA available: True\nCUDA runtime version: Could not collect\nCUDA_MODULE_LOADING set to: LAZY\nGPU models and configuration: GPU 0: NVIDIA GeForce RTX 4090\nNvidia driver version: 565.77\ncuDNN version: Probably one of the following:\n/usr/lib/x86_64-linux-gnu/libcudnn.so.8.9.6\n/usr/lib/x86_64-linux-gnu/libcudnn_adv_infer.so.8.9.6\n/usr/lib/x86_64-linux-gnu/libcudnn_adv_train.so.8.9.6\n/usr/lib/x86_64-linux-gnu/libcudnn_cnn_infer.so.8.9.6\n/usr/lib/x86_64-linux-gnu/libcudnn_cnn_train.so.8.9.6\n/usr/lib/x86_64-linux-gnu/libcudnn_ops_infer.so.8.9.6\n/usr/lib/x86_64-linux-gnu/libcudnn_ops_train.so.8.9.6\nHIP runtime version: N/A\nMIOpen runtime version: N/A\nIs XNNPACK available: True\n\nCPU:\nArchitecture:                         x86_64\nCPU op-mode(s):                       32-bit, 64-bit\nByte Order:                           Little Endian\nAddress sizes:                        46 bits physical, 57 bits virtual\nCPU(s):                               144\nOn-line CPU(s) list:                  0-143\nThread(s) per core:                   2\nCore(s) per socket:                   36\nSocket(s):                            2\nNUMA node(s):                         2\nVendor ID:                            GenuineIntel\nCPU family:                           6\nModel:                                106\nModel name:                           Intel(R) Xeon(R) Platinum 8352V CPU @ 2.10GHz\nStepping:                             6\nCPU MHz:                              2023.599\nCPU max MHz:                          3500.0000\nCPU min MHz:                          800.0000\nBogoMIPS:                             4227.72\nVirtualization:                       VT-x\nL1d cache:                            3.4 MiB\nL1i cache:                            2.3 MiB\nL2 cache:                             90 MiB\nL3 cache:                             108 MiB\nNUMA node0 CPU(s):                    0-35,72-107\nNUMA node1 CPU(s):                    36-71,108-143\nVulnerability Gather data sampling:   Mitigation; Microcode\nVulnerability Itlb multihit:          Not affected\nVulnerability L1tf:                   Not affected\nVulnerability Mds:                    Not affected\nVulnerability Meltdown:               Not affected\nVulnerability Mmio stale data:        Mitigation; Clear CPU buffers; SMT vulnerable\nVulnerability Reg file data sampling: Not affected\nVulnerability Retbleed:               Not affected\nVulnerability Spec rstack overflow:   Not affected\nVulnerability Spec store bypass:      Mitigation; Speculative Store Bypass disabled via prctl\nVulnerability Spectre v1:             Mitigation; usercopy/swapgs barriers and __user pointer sanitization\nVulnerability Spectre v2:             Mitigation; Enhanced / Automatic IBRS; IBPB conditional; RSB filling; PBRSB-eIBRS SW sequence; BHI SW loop, KVM SW loop\nVulnerability Srbds:                  Not affected\nVulnerability Tsx async abort:        Not affected\nFlags:                                fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc art arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid dca sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch cpuid_fault epb cat_l3 invpcid_single ssbd mba ibrs ibpb stibp ibrs_enhanced tpr_shadow vnmi flexpriority ept vpid ept_ad fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid cqm rdt_a avx512f avx512dq rdseed adx smap avx512ifma clflushopt clwb intel_pt avx512cd sha_ni avx512bw avx512vl xsaveopt xsavec xgetbv1 xsaves cqm_llc cqm_occup_llc cqm_mbm_total cqm_mbm_local split_lock_detect wbnoinvd dtherm ida arat pln pts avx512vbmi umip pku ospke avx512_vbmi2 gfni vaes vpclmulqdq avx512_vnni avx512_bitalg tme avx512_vpopcntdq la57 rdpid fsrm md_clear pconfig flush_l1d arch_capabilities\n\nVersions of relevant libraries:\n[pip3] numpy==2.4.6\n[pip3] nvidia-cublas-cu12==12.4.5.8\n[pip3] nvidia-cuda-cupti-cu12==12.4.127\n[pip3] nvidia-cuda-nvrtc-cu12==12.4.127\n[pip3] nvidia-cuda-runtime-cu12==12.4.127\n[pip3] nvidia-cudnn-cu12==9.1.0.70\n[pip3] nvidia-cufft-cu12==11.2.1.3\n[pip3] nvidia-curand-cu12==10.3.5.147\n[pip3] nvidia-cusolver-cu12==11.6.1.9\n[pip3] nvidia-cusparse-cu12==12.3.1.170\n[pip3] nvidia-cusparselt-cu12==0.6.2\n[pip3] nvidia-nccl-cu12==2.21.5\n[pip3] nvidia-nvjitlink-cu12==12.4.127\n[pip3] nvidia-nvtx-cu12==12.4.127\n[pip3] torch==2.6.0\n[pip3] torchmetrics==1.9.0\n[pip3] triton==3.2.0\n[conda] Could not collect",
+  "transformers_version": "4.57.0",
+  "lm_eval_version": "0.4.9.1",
+  "upper_git_hash": null,
+  "tokenizer_pad_token": [
+    "<|endoftext|>",
+    "151643"
+  ],
+  "tokenizer_eos_token": [
+    "<|im_end|>",
+    "151645"
+  ],
+  "tokenizer_bos_token": [
+    "<|endoftext|>",
+    "151643"
+  ],
+  "eot_token_id": null,
+  "max_length": 2048
+}

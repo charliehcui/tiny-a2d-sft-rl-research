@@ -1,0 +1,6 @@
+{
+  "parameters": 5046272,
+  "modules": 392,
+  "base_model_revision": "c8d24a3f4adaeef46881b450e1bf7d1005203bd7",
+  "only_lora_trainable": true
+}

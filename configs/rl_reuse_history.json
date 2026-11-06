@@ -1,0 +1,190 @@
+{
+  "baseline_test": {
+    "source": "results/baseline_20261103_test_v1/summary.json",
+    "source_sha256": "1fa8234df7ca5d51466a2814ebd769b7de080114a479da7aa77cff221119bf37",
+    "summary": {
+      "status": "complete",
+      "split": "test",
+      "examples": 1319,
+      "primary_metric": "exact_match,flexible-extract",
+      "correct": 267,
+      "accuracy": 0.20242608036391205,
+      "xml_answer_accuracy": 0.0037907505686125853,
+      "model_load_seconds": 11.69647098518908,
+      "warmup_seconds_excluded_from_generation_mean": 13.187241662293673,
+      "mean_generation_seconds": 1.591306684057174,
+      "median_generation_seconds": 1.6086559670511633,
+      "p95_generation_seconds": 1.7332286343444139,
+      "sum_generation_seconds": 2098.9335162714133,
+      "evaluation_wall_seconds": 2105.0994994305074,
+      "total_process_seconds": 2130.9261515140533,
+      "estimated_process_gpu_cost_cny": 1.302232648147477,
+      "gpu_name": "NVIDIA GeForce RTX 4090",
+      "gpu_total_bytes": 25278087168,
+      "peak_torch_allocated_bytes": 4695192576,
+      "peak_torch_reserved_bytes": 23077060608,
+      "forward_calls_per_example": [
+        256
+      ],
+      "no_eos_fraction": 0.001516300227445034,
+      "gpu_monitor": {
+        "samples": 2101,
+        "mean_gpu_utilization_percent": 93.81580199904808,
+        "max_gpu_utilization_percent": 99.0,
+        "peak_device_memory_mib": 22480.0,
+        "mean_power_watts": 435.16821989528796,
+        "max_temperature_celsius": 82.0
+      },
+      "protocol_sha256": "cffa1b44bfabab30655c79202a207509fec52ce09bcf4fb2a8eeef2dfa918560",
+      "input_prompt_hashes_checked": true,
+      "native_metric_agreement_checked": true,
+      "finished_utc": "2026-11-03T12:19:03Z",
+      "batch_size": 8,
+      "batches": 165,
+      "mean_batch_generation_seconds": 12.720809189523711,
+      "timing_definition": "batch wall time divided by actual batch size; single-request latency only when batch_size=1"
+    }
+  },
+  "sft_development": {
+    "source": "矩池云/rl-static512-g4-20261105-013032/development_sft/summary.json",
+    "source_sha256": "1d90c265054597a993ff230d02827981c6b4003facb1da924878ad2f7ec5e505",
+    "summary": {
+      "status": "complete",
+      "split": "validation",
+      "examples": 500,
+      "primary_metric": "exact_match,flexible-extract",
+      "correct": 144,
+      "accuracy": 0.288,
+      "xml_answer_accuracy": 0.286,
+      "model_load_seconds": 9.26301415078342,
+      "warmup_seconds_excluded_from_generation_mean": 13.54049881733954,
+      "mean_generation_seconds": 1.5895778665468097,
+      "median_generation_seconds": 1.611814486561343,
+      "p95_generation_seconds": 1.8299754308536649,
+      "sum_generation_seconds": 794.7889332734048,
+      "evaluation_wall_seconds": 797.4702236521989,
+      "total_process_seconds": 820.7141535282135,
+      "estimated_process_gpu_cost_cny": 0.5015475382672416,
+      "gpu_name": "NVIDIA GeForce RTX 4090",
+      "gpu_total_bytes": 25278087168,
+      "peak_torch_allocated_bytes": 4468070400,
+      "peak_torch_reserved_bytes": 21929918464,
+      "forward_calls_per_example": [
+        256
+      ],
+      "no_eos_fraction": 0.0,
+      "gpu_monitor": {
+        "samples": 796,
+        "mean_gpu_utilization_percent": 93.45979899497488,
+        "max_gpu_utilization_percent": 99.0,
+        "peak_device_memory_mib": 21386.0,
+        "mean_power_watts": 434.9463944723618,
+        "max_temperature_celsius": 76.0
+      },
+      "protocol_sha256": "cffa1b44bfabab30655c79202a207509fec52ce09bcf4fb2a8eeef2dfa918560",
+      "input_prompt_hashes_checked": true,
+      "native_metric_agreement_checked": true,
+      "finished_utc": "2026-11-04T11:15:44Z",
+      "batch_size": 8,
+      "batches": 63,
+      "mean_batch_generation_seconds": 12.615697353546109,
+      "timing_definition": "batch wall time divided by actual batch size; single-request latency only when batch_size=1"
+    }
+  },
+  "sft_test": {
+    "source": "矩池云/sft-gsm8k-test-20261104-045410/evaluation/summary.json",
+    "source_sha256": "d500854ddcd8f93276b2ef4a061c1a6fcc6060f2f6eb490a2c690d6a1566a507",
+    "summary": {
+      "status": "complete",
+      "split": "test",
+      "examples": 1319,
+      "primary_metric": "exact_match,flexible-extract",
+      "correct": 302,
+      "accuracy": 0.22896133434420016,
+      "xml_answer_accuracy": 0.22896133434420016,
+      "model_load_seconds": 7.947697771713138,
+      "warmup_seconds_excluded_from_generation_mean": 13.287303660064936,
+      "mean_generation_seconds": 1.580024155242322,
+      "median_generation_seconds": 1.598346919985488,
+      "p95_generation_seconds": 1.7130062920041382,
+      "sum_generation_seconds": 2084.0518607646227,
+      "evaluation_wall_seconds": 2089.8757088556886,
+      "total_process_seconds": 2112.047286748886,
+      "estimated_process_gpu_cost_cny": 1.2906955641243194,
+      "gpu_name": "NVIDIA GeForce RTX 4090",
+      "gpu_total_bytes": 25278087168,
+      "peak_torch_allocated_bytes": 4694668288,
+      "peak_torch_reserved_bytes": 22898802688,
+      "forward_calls_per_example": [
+        256
+      ],
+      "no_eos_fraction": 0.0,
+      "gpu_monitor": {
+        "samples": 2086,
+        "mean_gpu_utilization_percent": 93.99856184084372,
+        "max_gpu_utilization_percent": 99.0,
+        "peak_device_memory_mib": 22310.0,
+        "mean_power_watts": 434.2717689357622,
+        "max_temperature_celsius": 71.0
+      },
+      "protocol_sha256": "cffa1b44bfabab30655c79202a207509fec52ce09bcf4fb2a8eeef2dfa918560",
+      "input_prompt_hashes_checked": true,
+      "native_metric_agreement_checked": true,
+      "finished_utc": "2026-11-04T05:29:29Z",
+      "batch_size": 8,
+      "batches": 165,
+      "mean_batch_generation_seconds": 12.63061733796741,
+      "timing_definition": "batch wall time divided by actual batch size; single-request latency only when batch_size=1"
+    }
+  },
+  "previous_rl_development": {
+    "source": "矩池云/rl-static512-g4-20261105-013032/development_rl/summary.json",
+    "source_sha256": "0c89ab54b4e25ac148d9d385e1c8b2a73b087f5299bbce38bf06753c762410fe",
+    "summary": {
+      "status": "complete",
+      "split": "validation",
+      "examples": 500,
+      "primary_metric": "exact_match,flexible-extract",
+      "correct": 145,
+      "accuracy": 0.29,
+      "xml_answer_accuracy": 0.286,
+      "model_load_seconds": 14.247394729405642,
+      "warmup_seconds_excluded_from_generation_mean": 13.541230784729123,
+      "mean_generation_seconds": 1.589705764245242,
+      "median_generation_seconds": 1.6130629270337522,
+      "p95_generation_seconds": 1.8292381877545267,
+      "sum_generation_seconds": 794.8528821226209,
+      "evaluation_wall_seconds": 798.1800255719572,
+      "total_process_seconds": 826.417032957077,
+      "estimated_process_gpu_cost_cny": 0.5050326312515471,
+      "gpu_name": "NVIDIA GeForce RTX 4090",
+      "gpu_total_bytes": 25278087168,
+      "peak_torch_allocated_bytes": 4468070400,
+      "peak_torch_reserved_bytes": 21929918464,
+      "forward_calls_per_example": [
+        256
+      ],
+      "no_eos_fraction": 0.0,
+      "gpu_monitor": {
+        "samples": 796,
+        "mean_gpu_utilization_percent": 92.73994974874371,
+        "max_gpu_utilization_percent": 99.0,
+        "peak_device_memory_mib": 21386.0,
+        "mean_power_watts": 433.9299246231156,
+        "max_temperature_celsius": 75.0
+      },
+      "protocol_sha256": "cffa1b44bfabab30655c79202a207509fec52ce09bcf4fb2a8eeef2dfa918560",
+      "input_prompt_hashes_checked": true,
+      "native_metric_agreement_checked": true,
+      "finished_utc": "2026-11-05T05:38:28Z",
+      "batch_size": 8,
+      "batches": 63,
+      "mean_batch_generation_seconds": 12.616712414644777,
+      "timing_definition": "batch wall time divided by actual batch size; single-request latency only when batch_size=1"
+    }
+  },
+  "baseline_development": {
+    "status": "not_available",
+    "reason": "Only small development probes exist; do not treat them as a full 500-question evaluation"
+  }
+}

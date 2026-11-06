@@ -1,0 +1,6 @@
+work/*
+!work/rl_source/
+.venv
+**/__pycache__
+**/*.pyc
+.git

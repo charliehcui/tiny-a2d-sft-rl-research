@@ -1,0 +1,12 @@
+{
+  "status": "passed",
+  "presentations": 512,
+  "unique_questions": 385,
+  "unique_occurrences": 512,
+  "candidates": 2048,
+  "optimizer_steps": 32,
+  "exact_schedule_order": true,
+  "group_size": 4,
+  "num_iterations": 1,
+  "smoke_prefix_only": false
+}

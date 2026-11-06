@@ -1,0 +1,148 @@
+{
+  "status": "passed",
+  "scope": "Offline files, saved response rescoring and schedule checks; no model inference",
+  "evaluations": {
+    "results/baseline/development_smoke8": {
+      "rows": 8,
+      "correct": 3,
+      "accuracy": 0.375,
+      "xml-answer": 1,
+      "xml_extractor_success": 1,
+      "flexible-extract": 3
+    },
+    "results/baseline/official_test": {
+      "rows": 1319,
+      "correct": 267,
+      "accuracy": 0.20242608036391205,
+      "xml-answer": 5,
+      "xml_extractor_success": 16,
+      "flexible-extract": 267
+    },
+    "results/final_rl/development": {
+      "rows": 500,
+      "correct": 146,
+      "accuracy": 0.292,
+      "xml-answer": 145,
+      "xml_extractor_success": 498,
+      "flexible-extract": 146
+    },
+    "results/final_rl/official_test": {
+      "rows": 1319,
+      "correct": 299,
+      "accuracy": 0.2266868840030326,
+      "xml-answer": 299,
+      "xml_extractor_success": 1316,
+      "flexible-extract": 299
+    },
+    "results/rl_pilot1/development": {
+      "rows": 500,
+      "correct": 147,
+      "accuracy": 0.294,
+      "xml-answer": 146,
+      "xml_extractor_success": 498,
+      "flexible-extract": 147
+    },
+    "results/rl_pilot2/development": {
+      "rows": 500,
+      "correct": 145,
+      "accuracy": 0.29,
+      "xml-answer": 143,
+      "xml_extractor_success": 497,
+      "flexible-extract": 145
+    },
+    "results/sft/development": {
+      "rows": 500,
+      "correct": 144,
+      "accuracy": 0.288,
+      "xml-answer": 143,
+      "xml_extractor_success": 498,
+      "flexible-extract": 144
+    },
+    "results/sft/official_test": {
+      "rows": 1319,
+      "correct": 302,
+      "accuracy": 0.22896133434420016,
+      "xml-answer": 302,
+      "xml_extractor_success": 1315,
+      "flexible-extract": 302
+    }
+  },
+  "training": {
+    "sft": {
+      "optimizer_steps": 626,
+      "max_logged_step": 626
+    },
+    "rl_pilot1": {
+      "optimizer_steps": 32,
+      "new_candidates": 2048,
+      "groups": 512,
+      "mixed_groups": 127,
+      "mean_reward": 0.1884765625,
+      "xml-answer": 384,
+      "xml_extractor_success": 2040,
+      "flexible-extract": 386
+    },
+    "rl_pilot2": {
+      "optimizer_steps": 32,
+      "new_candidates": 2048,
+      "groups": 512,
+      "mixed_groups": 221,
+      "mean_reward": 0.25830078125,
+      "xml-answer": 527,
+      "xml_extractor_success": 2042,
+      "flexible-extract": 529
+    },
+    "final_rl": {
+      "optimizer_steps": 384,
+      "new_candidates": 6144,
+      "groups": 1536,
+      "mixed_groups": 422,
+      "mean_reward": 0.19547526041666666,
+      "per_step_adapter_hash_records": 0,
+      "per_step_metrics_and_probability_records": 384,
+      "xml-answer": 1199,
+      "xml_extractor_success": 6128,
+      "flexible-extract": 1201
+    },
+    "rl_totals": {
+      "new_candidates": 10240,
+      "optimizer_steps": 448
+    }
+  },
+  "weights": {
+    "models/final_rl_adapter/adapter_model.safetensors": {
+      "tensors": 392,
+      "parameters": 5046272,
+      "bytes": 20236472,
+      "sha256": "94079715d1e7c7cada16ffd1ed51a2e6078209ca00d4b29dca62df1a06d3bbc0",
+      "dtypes": [
+        "F32"
+      ]
+    },
+    "models/sft_adapter/adapter_model.safetensors": {
+      "tensors": 392,
+      "parameters": 5046272,
+      "bytes": 20236472,
+      "sha256": "320d3459f8678878aeaa1d36f421b1b238f374bbb081d03e146e50c17d6f3be2",
+      "dtypes": [
+        "F32"
+      ]
+    },
+    "runs/sft-gsm8k-20261104-011915/final_model/model.safetensors": {
+      "status": "omitted_from_public_repository",
+      "reason": "GB-sized merged model; restore from the included adapters before evaluation"
+    },
+    "runs/rl-reuse1536-g4-u4-20261105-final01/final_model/model.safetensors": {
+      "status": "omitted_from_public_repository",
+      "reason": "GB-sized merged model; restore from the included adapters before evaluation"
+    }
+  },
+  "manifest": {
+    "status": "not_created_yet"
+  },
+  "schedules": {
+    "static_presentations": 512,
+    "static_unique_questions": 385,
+    "reuse_unique_questions": 1536
+  }
+}

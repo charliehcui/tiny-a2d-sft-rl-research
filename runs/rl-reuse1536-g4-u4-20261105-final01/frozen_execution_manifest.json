@@ -1,0 +1,11 @@
+{
+  "protocol_sha256": "cffa1b44bfabab30655c79202a207509fec52ce09bcf4fb2a8eeef2dfa918560",
+  "data_sha256": "0d46a6d68f16e3a3a132e587f241224d161c254335f120a11a90eaa053fa591b",
+  "code_sha256": {
+    "run_final_rl.py": "364b98e0ccecce9770982fe119e007f9e8ece950dd449e293219d0904e9464ae",
+    "rl_storage.py": "560eb2305866bd20c02b3ef8e469d4d8c52baa94a0b1b8c40a4a9e626b4ac924",
+    "train_rl_reuse.py": "821a23755a6965587e125b736c1ec9e9e9ea10594fbb7c9e0a9caab0dff79528",
+    "rl_reuse_trainer.py": "bfd5a958a2ac79049cfbcbb377e0d5429c41295a1d5165f26b393aa3501ec55e",
+    "evaluate_model.py": "eb67cfa5f941d319c45ca853ee704c27adbc95ab5df4d65a3d2ff518394b24d1"
+  }
+}

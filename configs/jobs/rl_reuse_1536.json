@@ -1,0 +1,34 @@
+{
+  "enabled": true,
+  "stage": "rl",
+  "command": [
+    "{python}",
+    "-u",
+    "{project}/scripts/run_final_rl.py",
+    "--config",
+    "{project}/configs/rl_reuse_tiny_a2d.json",
+    "--run-dir",
+    "{run_dir}"
+  ],
+  "progress": {
+    "kind": "trainer",
+    "path": "training_progress.json"
+  },
+  "required_outputs": [
+    "training_summary.json",
+    "final_adapter/adapter_model.safetensors",
+    "final_model/export_complete.json",
+    "checkpoints/checkpoint-384/checkpoint_verified.json",
+    "development/summary.json",
+    "development/predictions.jsonl",
+    "official_test/summary.json",
+    "official_test/predictions.jsonl",
+    "comparison_summary.json",
+    "workflow_summary.json"
+  ],
+  "max_runtime_minutes": 1079,
+  "poll_seconds": 5,
+  "stop_grace_seconds": 30,
+  "min_free_gib": 2.25,
+  "note": "User authorized final fixed RL plus frozen development500 and single official test1319. Entire allocated workflow <=18h; no instance lifecycle actions; no automatic retries."
+}

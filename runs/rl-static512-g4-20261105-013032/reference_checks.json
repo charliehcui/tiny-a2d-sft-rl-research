@@ -1,0 +1,39 @@
+{
+  "status": "passed",
+  "protocol_sha256": "cffa1b44bfabab30655c79202a207509fec52ce09bcf4fb2a8eeef2dfa918560",
+  "evaluations": {
+    "development_sft": {
+      "reused": true,
+      "correct": 144,
+      "source": {
+        "path": "data/gsm8k/rl_static_sources/development_sft",
+        "expected_correct": 144,
+        "source_run": "rl-gsm8k-512-g4-20261104-110156",
+        "source_phase": "development_sft",
+        "files_sha256": {
+          "predictions.jsonl": "9dea010e11d393a4e2a7b81c0ee957718e518bbdc84f96882772d9a56dd66ef9",
+          "summary.json": "1d90c265054597a993ff230d02827981c6b4003facb1da924878ad2f7ec5e505",
+          "run_config.json": "a7a51695b2f4a02f7c73a77193c71530ddaf0547847baa1bf6a605a6ba7b35d8"
+        }
+      },
+      "historical_process_seconds_excluded_from_new_cost": 820.7141535282135
+    },
+    "development_previous_rl": {
+      "reused": true,
+      "correct": 147,
+      "source": {
+        "path": "data/gsm8k/rl_static_sources/development_previous_rl",
+        "expected_correct": 147,
+        "source_run": "rl-gsm8k-512-g4-20261104-110156",
+        "source_phase": "development_rl",
+        "files_sha256": {
+          "predictions.jsonl": "b77fce4b1ab3e27a13b88422b9060845d058226059c38145c3fc41097f662c98",
+          "summary.json": "e114c75750aa93efdffa2e624f740e8e3a7346946fb7646518b1a9aa9c11ce82",
+          "run_config.json": "eb17ff8bd28e788a6d638971518bdb7d062eeadc0c53e1138b560c1a2649d51f"
+        }
+      },
+      "historical_process_seconds_excluded_from_new_cost": 833.2608578205109
+    }
+  },
+  "no_models_rerun": true
+}

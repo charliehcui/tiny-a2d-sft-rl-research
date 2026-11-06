@@ -1,0 +1,6 @@
+{
+  "algorithm": "diffu-GRPO with rollout reuse",
+  "source_sft_run": "sft-gsm8k-20261104-011915",
+  "rl_adapter_sha256": "94079715d1e7c7cada16ffd1ed51a2e6078209ca00d4b29dca62df1a06d3bbc0",
+  "merged_diffusion_model": true
+}

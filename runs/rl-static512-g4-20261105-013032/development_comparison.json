@@ -1,0 +1,202 @@
+{
+  "status": "complete",
+  "development_questions": 500,
+  "sft_correct": 144,
+  "previous_rl_correct": 147,
+  "rl_correct": 145,
+  "rl_accuracy": 0.29,
+  "comparisons": {
+    "development_sft": {
+      "before_correct": 144,
+      "after_correct": 145,
+      "wrong_to_right": 20,
+      "right_to_wrong": 19,
+      "both_correct": 125,
+      "both_wrong": 336,
+      "accuracy_delta_percentage_points": 0.2,
+      "paired_exact_p": 1.0,
+      "paired_bootstrap_delta_ci95_percentage_points": [
+        -2.2,
+        2.6
+      ],
+      "bootstrap_repeats": 4000,
+      "bootstrap_seed": 20261105
+    },
+    "development_previous_rl": {
+      "before_correct": 147,
+      "after_correct": 145,
+      "wrong_to_right": 18,
+      "right_to_wrong": 20,
+      "both_correct": 127,
+      "both_wrong": 335,
+      "accuracy_delta_percentage_points": -0.4,
+      "paired_exact_p": 0.8714146793645341,
+      "paired_bootstrap_delta_ci95_percentage_points": [
+        -2.8,
+        2.0
+      ],
+      "bootstrap_repeats": 4000,
+      "bootstrap_seed": 20261105
+    }
+  },
+  "training_summary": {
+    "status": "complete",
+    "optimizer_steps": 32,
+    "planned_optimizer_steps": 32,
+    "questions_sampled": 512,
+    "candidates_generated": 2048,
+    "correct_candidates_histogram": {
+      "1": 92,
+      "0": 258,
+      "3": 47,
+      "2": 82,
+      "4": 33
+    },
+    "mixed_reward_groups": 221,
+    "candidate_mean_reward": 0.25830078125,
+    "sampled_solution_coverage": 0.49609375,
+    "mean_distinct_outputs_per_group": 4.0,
+    "trainable_parameters": 5046272,
+    "adapter_tensors_changed": 392,
+    "training_seconds": 13959.670205166563,
+    "training_metrics": {
+      "train_runtime": 13958.8667,
+      "train_samples_per_second": 0.147,
+      "train_steps_per_second": 0.002,
+      "total_flos": 0.0,
+      "train_loss": 3.1976910122466506e-05
+    },
+    "peak_allocated_bytes": 17048226816,
+    "peak_reserved_bytes": 19474153472,
+    "gpu_name": "NVIDIA GeForce RTX 4090",
+    "source_sft_run": "sft-gsm8k-20261104-011915",
+    "smoke": false,
+    "data_selection": "static_mixed_v1",
+    "question_presentations": 512,
+    "unique_questions": 385,
+    "data_sha256": "1054fc57d466c3a93f04c51e98bf095248f822190c566affd4db934a4843e602",
+    "sampling_pools": {
+      "priority": {
+        "presentations": 254,
+        "unique_questions": 127,
+        "all_wrong_groups": 78,
+        "all_correct_groups": 15,
+        "mixed_groups": 161,
+        "mixed_group_rate": 0.6338582677165354,
+        "candidate_mean_reward": 0.343503937007874,
+        "correct_candidates_histogram": {
+          "1": 66,
+          "0": 78,
+          "3": 33,
+          "2": 62,
+          "4": 15
+        }
+      },
+      "exploration": {
+        "presentations": 258,
+        "unique_questions": 258,
+        "all_wrong_groups": 180,
+        "all_correct_groups": 18,
+        "mixed_groups": 60,
+        "mixed_group_rate": 0.23255813953488372,
+        "candidate_mean_reward": 0.1744186046511628,
+        "correct_candidates_histogram": {
+          "0": 180,
+          "1": 26,
+          "2": 20,
+          "3": 14,
+          "4": 18
+        }
+      },
+      "priority_first": {
+        "presentations": 127,
+        "unique_questions": 127,
+        "all_wrong_groups": 43,
+        "all_correct_groups": 6,
+        "mixed_groups": 78,
+        "mixed_group_rate": 0.6141732283464567,
+        "candidate_mean_reward": 0.328740157480315,
+        "correct_candidates_histogram": {
+          "1": 31,
+          "0": 43,
+          "3": 18,
+          "2": 29,
+          "4": 6
+        }
+      },
+      "priority_second": {
+        "presentations": 127,
+        "unique_questions": 127,
+        "all_wrong_groups": 35,
+        "all_correct_groups": 9,
+        "mixed_groups": 83,
+        "mixed_group_rate": 0.6535433070866141,
+        "candidate_mean_reward": 0.35826771653543305,
+        "correct_candidates_histogram": {
+          "1": 35,
+          "4": 9,
+          "0": 35,
+          "3": 15,
+          "2": 33
+        }
+      }
+    },
+    "total_seconds": 14032.788403818384,
+    "free_persistent_bytes": 637534208
+  },
+  "mixed_group_rate": 0.431640625,
+  "preregistered_targets": {
+    "mixed_group_rate": 0.35,
+    "development_correct": 162,
+    "mixed_group_target_met": true,
+    "development_target_met": false,
+    "targets_do_not_control_stopping_or_selection": true
+  },
+  "estimated_total_process_seconds": 14859.20543677546,
+  "estimated_process_cost_cny": 9.080625544696115,
+  "historical_evaluations_excluded_from_cost": true,
+  "cost_excludes_instance_idle_time_and_separate_smoke": true,
+  "official_test_evaluated": false,
+  "rl_generation_summary": {
+    "status": "complete",
+    "split": "validation",
+    "examples": 500,
+    "primary_metric": "exact_match,flexible-extract",
+    "correct": 145,
+    "accuracy": 0.29,
+    "xml_answer_accuracy": 0.286,
+    "model_load_seconds": 14.247394729405642,
+    "warmup_seconds_excluded_from_generation_mean": 13.541230784729123,
+    "mean_generation_seconds": 1.589705764245242,
+    "median_generation_seconds": 1.6130629270337522,
+    "p95_generation_seconds": 1.8292381877545267,
+    "sum_generation_seconds": 794.8528821226209,
+    "evaluation_wall_seconds": 798.1800255719572,
+    "total_process_seconds": 826.417032957077,
+    "estimated_process_gpu_cost_cny": 0.5050326312515471,
+    "gpu_name": "NVIDIA GeForce RTX 4090",
+    "gpu_total_bytes": 25278087168,
+    "peak_torch_allocated_bytes": 4468070400,
+    "peak_torch_reserved_bytes": 21929918464,
+    "forward_calls_per_example": [
+      256
+    ],
+    "no_eos_fraction": 0.0,
+    "gpu_monitor": {
+      "samples": 796,
+      "mean_gpu_utilization_percent": 92.73994974874371,
+      "max_gpu_utilization_percent": 99.0,
+      "peak_device_memory_mib": 21386.0,
+      "mean_power_watts": 433.9299246231156,
+      "max_temperature_celsius": 75.0
+    },
+    "protocol_sha256": "cffa1b44bfabab30655c79202a207509fec52ce09bcf4fb2a8eeef2dfa918560",
+    "input_prompt_hashes_checked": true,
+    "native_metric_agreement_checked": true,
+    "finished_utc": "2026-11-05T05:38:28Z",
+    "batch_size": 8,
+    "batches": 63,
+    "mean_batch_generation_seconds": 12.616712414644777,
+    "timing_definition": "batch wall time divided by actual batch size; single-request latency only when batch_size=1"
+  }
+}

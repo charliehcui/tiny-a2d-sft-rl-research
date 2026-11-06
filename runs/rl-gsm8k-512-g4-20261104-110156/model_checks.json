@@ -1,0 +1,13 @@
+{
+  "base_model": "/mnt/bluewhale/runs/sft-gsm8k-20261104-011915/final_model",
+  "reference_policy": "merged SFT with only the new RL adapter disabled",
+  "reference_logit_max_abs_difference_at_start": 0.0,
+  "trainable_lora_parameters": 5046272,
+  "num_generations": 4,
+  "generation_batch_size": 4,
+  "steps_per_generation": 4,
+  "gradient_accumulation_steps": 64,
+  "effective_questions_per_update": 16,
+  "native_trainer": "DiffuGRPOTrainer",
+  "trl_model_accepts_loss_kwargs": false
+}

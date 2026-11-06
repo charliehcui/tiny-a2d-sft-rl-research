@@ -1,0 +1,11 @@
+{
+  "python": "3.11.18 (main, Oct 26 2026, 18:19:35) [GCC 14.3.0]",
+  "torch": "2.6.0+cu124",
+  "torch_cuda": "12.4",
+  "transformers": "4.57.0",
+  "cuda_available": true,
+  "gpu_name": "NVIDIA GeForce RTX 4090",
+  "gpu_total_bytes": 25278087168,
+  "runtime_environment": "/opt/bluewhale_env",
+  "persistent_project": "/mnt/bluewhale"
+}

@@ -1,0 +1,53 @@
+{
+  "validation": {
+    "rows": 500,
+    "missing_questions": 0,
+    "missing_answers": 0,
+    "invalid_final_answers": 0,
+    "duplicate_ids": 0,
+    "duplicate_normalized_questions": 0
+  },
+  "sft_train": {
+    "rows": 5000,
+    "missing_questions": 0,
+    "missing_answers": 0,
+    "invalid_final_answers": 0,
+    "duplicate_ids": 0,
+    "duplicate_normalized_questions": 0
+  },
+  "rl_train": {
+    "rows": 1973,
+    "missing_questions": 0,
+    "missing_answers": 0,
+    "invalid_final_answers": 0,
+    "duplicate_ids": 0,
+    "duplicate_normalized_questions": 0
+  },
+  "test": {
+    "rows": 1319,
+    "missing_questions": 0,
+    "missing_answers": 0,
+    "invalid_final_answers": 0,
+    "duplicate_ids": 0,
+    "duplicate_normalized_questions": 0
+  },
+  "cross_split_overlap": {
+    "ids": 0,
+    "normalized_questions": 0
+  },
+  "official_test_question_and_answer_preserved": true,
+  "official_test_order_preserved": true,
+  "all_official_train_rows_assigned_once": true,
+  "normalization": "NFKC Unicode normalization, casefold, whitespace collapse; comparison only, no source text changes",
+  "semantic_near_duplicate_search_performed": false,
+  "processed_formats_verified": true,
+  "no_gold_answers_in_model_prompt_fields": true,
+  "source_numbers_with_thousands_separator": {
+    "train": 79,
+    "test": 14
+  },
+  "source_negative_answers": {
+    "train": 3,
+    "test": 2
+  }
+}

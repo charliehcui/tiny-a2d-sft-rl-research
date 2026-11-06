@@ -1,0 +1,37 @@
+{
+  "enabled": true,
+  "stage": "rl",
+  "command": [
+    "{python}",
+    "-u",
+    "{project}/scripts/train_rl.py",
+    "--config",
+    "{project}/configs/rl_static_tiny_a2d.json",
+    "--run-dir",
+    "{run_dir}"
+  ],
+  "progress": {
+    "kind": "trainer",
+    "path": "training_progress.json"
+  },
+  "required_outputs": [
+    "training_summary.json",
+    "checkpoints/trainer_state.json",
+    "final_adapter/adapter_config.json",
+    "final_adapter/adapter_model.safetensors",
+    "final_model/model.safetensors",
+    "development_comparison.json",
+    "development_sft/summary.json",
+    "development_rl/summary.json",
+    "sampling_schedule.jsonl",
+    "sampling_checks.json",
+    "development_previous_rl/summary.json",
+    "reference_checks.json",
+    "sampling_pool_summary.json"
+  ],
+  "max_runtime_minutes": 285,
+  "poll_seconds": 5,
+  "stop_grace_seconds": 300,
+  "min_free_gib": 1.65,
+  "note": "Static selection only; original SFT start, G=4, temperature=1, 512 presentations/385 questions/2048 new candidates/32 updates. Manual GPU stop. No retries or test evaluation."
+}

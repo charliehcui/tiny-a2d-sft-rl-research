@@ -1,0 +1,7 @@
+{
+  "source_sft_run": "sft-gsm8k-20261104-011915",
+  "fresh_adapter_vs_sft_max_abs_logit_difference": 0.0,
+  "reference_is_merged_sft626": true,
+  "logical_batch": 64,
+  "physical_generation_batch": 4
+}

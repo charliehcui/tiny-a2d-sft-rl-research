@@ -1,0 +1,69 @@
+{
+  "strategy": "static_mixed_v1",
+  "research_report": "reports/rl_training_data_research_20261105.md",
+  "source": "data/gsm8k/processed/rl_train.jsonl",
+  "historical_groups": "data/gsm8k/rl_static_sources/reward_groups.jsonl",
+  "historical_run": "rl-gsm8k-512-g4-20261104-110156",
+  "baseline_config": "configs/rl_tiny_a2d.json",
+  "input_sha256": {
+    "data/gsm8k/processed/rl_train.jsonl": "7088adb90f46b53d9d0917991d54bdb39ceaf40d54d75587fefddb7c6c8d62c5",
+    "data/gsm8k/rl_static_sources/reward_groups.jsonl": "c6f3b8790ed57c80ab986efd39571d5ae54fd9e1ff736b38ebef4ae5be23450e",
+    "configs/rl_tiny_a2d.json": "3e03ca6f290cfa3a513ddeaa3d887a6d6049b8fc2b134a7e26717f7fe6023ea5"
+  },
+  "schedule": {
+    "selection_seed": 43,
+    "priority_order_seed": 42,
+    "canonical_order": "priority IDs sorted; strata retain source order; ties use 0-2,3-4,5+ order",
+    "exploration_rng": "Random(43): sample each stratum in order, then shuffle the 258 selected IDs",
+    "slot_order": "priority slots precede exploration slots inside each update; priority slots repeat after 16 updates",
+    "strata": [
+      {
+        "name": "steps_0_2",
+        "pool_questions": 661,
+        "selected_questions": 92
+      },
+      {
+        "name": "steps_3_4",
+        "pool_questions": 876,
+        "selected_questions": 123
+      },
+      {
+        "name": "steps_5_plus",
+        "pool_questions": 309,
+        "selected_questions": 43
+      }
+    ],
+    "presentations": 512,
+    "unique_questions": 385,
+    "priority_questions": 127,
+    "priority_presentations": 254,
+    "exploration_presentations": 258,
+    "candidates_per_group": 4,
+    "total_candidates": 2048,
+    "optimizer_steps": 32,
+    "presentations_per_update": 16
+  },
+  "leakage_checks": {
+    "sft_train": {
+      "rows": 5000,
+      "id_overlap": 0,
+      "normalized_question_overlap": 0,
+      "sha256": "378c4aaeffebb3030a107870cebfd746716c9241229fbbd0f0ad642a7825e9d6"
+    },
+    "validation": {
+      "rows": 500,
+      "id_overlap": 0,
+      "normalized_question_overlap": 0,
+      "sha256": "e83b97e0ba579b53e6ff0375cca3683f62e3f388318efc30ae36b2a897194f1c"
+    },
+    "test": {
+      "rows": 1319,
+      "id_overlap": 0,
+      "normalized_question_overlap": 0,
+      "sha256": "3d9971d4545b07739f108972310a0a389a4b19b58596d2095eb6872a4ddc33a2"
+    }
+  },
+  "semantic_near_duplicates_checked": false,
+  "official_test_used_only_for_overlap_check": true,
+  "old_responses_or_rewards_reused_for_training": false
+}

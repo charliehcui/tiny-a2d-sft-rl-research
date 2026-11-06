@@ -1,0 +1,5 @@
+{
+  "status": "passed",
+  "cases": 6,
+  "implementation": "official RegexFilter and exact_match_fn"
+}

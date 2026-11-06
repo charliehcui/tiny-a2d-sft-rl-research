@@ -1,0 +1,35 @@
+{
+  "status": "complete",
+  "optimizer_steps": 32,
+  "planned_optimizer_steps": 32,
+  "questions_sampled": 512,
+  "candidates_generated": 2048,
+  "correct_candidates_histogram": {
+    "0": 338,
+    "1": 73,
+    "3": 17,
+    "2": 37,
+    "4": 47
+  },
+  "mixed_reward_groups": 127,
+  "candidate_mean_reward": 0.1884765625,
+  "sampled_solution_coverage": 0.33984375,
+  "mean_distinct_outputs_per_group": 4.0,
+  "trainable_parameters": 5046272,
+  "adapter_tensors_changed": 392,
+  "training_seconds": 14117.677889302373,
+  "training_metrics": {
+    "train_runtime": 14116.8142,
+    "train_samples_per_second": 0.145,
+    "train_steps_per_second": 0.002,
+    "total_flos": 0.0,
+    "train_loss": 3.196595923782297e-05
+  },
+  "peak_allocated_bytes": 17048226816,
+  "peak_reserved_bytes": 19457376256,
+  "gpu_name": "NVIDIA GeForce RTX 4090",
+  "source_sft_run": "sft-gsm8k-20261104-011915",
+  "smoke": false,
+  "total_seconds": 14151.23506197147,
+  "free_persistent_bytes": 566231040
+}

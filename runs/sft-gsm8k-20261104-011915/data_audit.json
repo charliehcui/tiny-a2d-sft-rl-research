@@ -1,0 +1,15 @@
+{
+  "train": {
+    "rows": 5000,
+    "max_tokens": 491,
+    "mean_tokens": 199.3106,
+    "truncated": 0
+  },
+  "validation": {
+    "rows": 500,
+    "max_tokens": 446,
+    "mean_tokens": 201.466,
+    "truncated": 0
+  },
+  "planned_optimizer_steps": 626
+}

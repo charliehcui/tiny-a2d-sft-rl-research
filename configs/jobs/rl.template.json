@@ -1,0 +1,13 @@
+{
+  "enabled": false,
+  "stage": "rl",
+  "command": [],
+  "progress": {"kind": "trainer", "path": "training_progress.json"},
+  "required_outputs": ["checkpoints/trainer_state.json"],
+  "max_runtime_minutes": 120,
+  "poll_seconds": 5,
+  "stop_grace_seconds": 300,
+  "min_free_gib": null,
+  "trainer_arguments_to_apply_when_integrating": {"output_dir": "{run_dir}/checkpoints", "save_strategy": "steps", "save_steps": 48, "save_total_limit": 2, "save_only_model": false, "logging_steps": 5, "disable_tqdm": false, "report_to": "none", "overwrite_output_dir": false},
+  "note": "Disabled until the existing DiffuGRPO entry point uses the fixed RL split, ExperimentCallback, and final save_model/save_state. save_steps must be divisible by the actual num_iterations; 48 is a placeholder. Exact RL resume requires separate validation."
+}

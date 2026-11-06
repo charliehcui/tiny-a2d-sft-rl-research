@@ -1,0 +1,38 @@
+{
+  "strategy": "uniform_reuse_v1",
+  "source": "data/gsm8k/processed/rl_train.jsonl",
+  "input_sha256": {
+    "data/gsm8k/processed/rl_train.jsonl": "7088adb90f46b53d9d0917991d54bdb39ceaf40d54d75587fefddb7c6c8d62c5",
+    "configs/rl_tiny_a2d.json": "3e03ca6f290cfa3a513ddeaa3d887a6d6049b8fc2b134a7e26717f7fe6023ea5"
+  },
+  "selection": "Original source order; independent Random(42).shuffle; first 1536",
+  "questions": 1536,
+  "group_size": 4,
+  "new_candidates": 6144,
+  "questions_per_cycle": 16,
+  "rollout_cycles": 96,
+  "updates_per_cycle": 4,
+  "optimizer_steps": 384,
+  "leakage_checks": {
+    "sft_train": {
+      "rows": 5000,
+      "id_overlap": 0,
+      "normalized_question_overlap": 0,
+      "sha256": "378c4aaeffebb3030a107870cebfd746716c9241229fbbd0f0ad642a7825e9d6"
+    },
+    "validation": {
+      "rows": 500,
+      "id_overlap": 0,
+      "normalized_question_overlap": 0,
+      "sha256": "e83b97e0ba579b53e6ff0375cca3683f62e3f388318efc30ae36b2a897194f1c"
+    },
+    "test": {
+      "rows": 1319,
+      "id_overlap": 0,
+      "normalized_question_overlap": 0,
+      "sha256": "3d9971d4545b07739f108972310a0a389a4b19b58596d2095eb6872a4ddc33a2"
+    }
+  },
+  "test_used_only_for_id_and_normalized_question_overlap": true,
+  "historical_rewards_used": false
+}

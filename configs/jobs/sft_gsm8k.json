@@ -1,0 +1,30 @@
+{
+  "enabled": true,
+  "stage": "sft",
+  "command": [
+    "{python}",
+    "-u",
+    "{project}/scripts/train_sft.py",
+    "--config",
+    "{project}/configs/sft_tiny_a2d.json",
+    "--run-dir",
+    "{run_dir}"
+  ],
+  "progress": {
+    "kind": "trainer",
+    "path": "training_progress.json"
+  },
+  "required_outputs": [
+    "training_summary.json",
+    "checkpoints/trainer_state.json",
+    "final_adapter/adapter_config.json",
+    "final_adapter/adapter_model.safetensors",
+    "final_model/config.json",
+    "final_model/model.safetensors"
+  ],
+  "max_runtime_minutes": 180,
+  "poll_seconds": 5,
+  "stop_grace_seconds": 300,
+  "min_free_gib": 2.25,
+  "note": "Formal SFT explicitly approved by user on 2026-11-04. Keep reviewed training parameters unchanged. Manual GPU stopping only; never auto-releases the instance."
+}

@@ -1,0 +1,12 @@
+{
+  "enabled": true,
+  "stage": "rl",
+  "command": ["{python}", "-u", "{project}/scripts/train_rl_reuse.py", "--config", "{project}/configs/rl_reuse_tiny_a2d.json", "--run-dir", "{run_dir}", "--smoke"],
+  "progress": {"kind": "trainer", "path": "training_progress.json"},
+  "required_outputs": ["training_summary.json", "checkpoints/checkpoint-4/pipeline_complete.json", "checkpoints/checkpoint-4/reuse_state.json", "resumed/training_summary.json", "resumed/resume_checks.json", "resumed/checkpoints/checkpoint-8/pipeline_complete.json", "reuse_smoke_checks.json"],
+  "max_runtime_minutes": 40,
+  "poll_seconds": 5,
+  "stop_grace_seconds": 120,
+  "min_free_gib": 0.35,
+  "note": "Authorized correctness smoke only: first 32 questions of frozen schedule, 128 fresh candidates, 2 cycles, 8 updates, stop at 4 and resume to 8. No evaluation, model merge, file deletion or instance lifecycle action."
+}

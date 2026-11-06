@@ -1,0 +1,33 @@
+{
+  "tokenizer_only_no_weights_or_gpu": true,
+  "tokenizer_class": "Qwen2TokenizerFast",
+  "mask_token_id": 151669,
+  "splits": {
+    "train": {
+      "rows": 5000,
+      "min_tokens": 98,
+      "mean_tokens": 199.3106,
+      "p50_tokens": 189.0,
+      "p95_tokens": 306,
+      "max_tokens": 491,
+      "over_512": 0,
+      "over_1024": 0,
+      "response_over_256": 28,
+      "prompt_prefix_mismatch_count": 0,
+      "mismatch_ids_first5": []
+    },
+    "validation": {
+      "rows": 500,
+      "min_tokens": 99,
+      "mean_tokens": 201.466,
+      "p50_tokens": 192.0,
+      "p95_tokens": 312,
+      "max_tokens": 446,
+      "over_512": 0,
+      "over_1024": 0,
+      "response_over_256": 1,
+      "prompt_prefix_mismatch_count": 0,
+      "mismatch_ids_first5": []
+    }
+  }
+}

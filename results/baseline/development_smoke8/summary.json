@@ -1,0 +1,42 @@
+{
+  "status": "complete",
+  "split": "validation",
+  "examples": 8,
+  "primary_metric": "exact_match,flexible-extract",
+  "correct": 3,
+  "accuracy": 0.375,
+  "xml_answer_accuracy": 0.125,
+  "model_load_seconds": 12.893171574920416,
+  "warmup_seconds_excluded_from_generation_mean": 13.468186777085066,
+  "mean_generation_seconds": 1.5820617922581732,
+  "median_generation_seconds": 1.5820617922581732,
+  "p95_generation_seconds": 1.5820617922581732,
+  "sum_generation_seconds": 12.656494338065386,
+  "evaluation_wall_seconds": 14.126126404851675,
+  "total_process_seconds": 40.636799812316895,
+  "estimated_process_gpu_cost_cny": 0.024833599885304772,
+  "gpu_name": "NVIDIA GeForce RTX 4090",
+  "gpu_total_bytes": 25278087168,
+  "peak_torch_allocated_bytes": 3971518976,
+  "peak_torch_reserved_bytes": 4278190080,
+  "forward_calls_per_example": [
+    256
+  ],
+  "no_eos_fraction": 0.0,
+  "gpu_monitor": {
+    "samples": 14,
+    "mean_gpu_utilization_percent": 93.71428571428571,
+    "max_gpu_utilization_percent": 99.0,
+    "peak_device_memory_mib": 4552.0,
+    "mean_power_watts": 429.19214285714287,
+    "max_temperature_celsius": 76.0
+  },
+  "protocol_sha256": "cffa1b44bfabab30655c79202a207509fec52ce09bcf4fb2a8eeef2dfa918560",
+  "input_prompt_hashes_checked": true,
+  "native_metric_agreement_checked": true,
+  "finished_utc": "2026-11-03T11:42:32Z",
+  "batch_size": 8,
+  "batches": 1,
+  "mean_batch_generation_seconds": 12.656494338065386,
+  "timing_definition": "batch wall time divided by actual batch size; single-request latency only when batch_size=1"
+}

@@ -1,0 +1,23 @@
+{
+  "frozen_utc": "2026-11-03T11:43:16.937180+00:00",
+  "official_test_examples": 1319,
+  "test_evaluated_before_freeze": false,
+  "protocol": "configs/baseline_protocol_v2.json",
+  "selection_reason": "Validation-only batch throughput and memory check; no change to prompt, scoring, steps, length, temperature, or checkpoint",
+  "development_results": {
+    "batch_1_examples": 8,
+    "batch_1_correct": 3,
+    "batch_1_mean_seconds": 7.558652172796428,
+    "batch_8_examples": 8,
+    "batch_8_correct": 3,
+    "batch_8_amortized_mean_seconds": 1.5820617922581732
+  },
+  "files_sha256": {
+    "scripts/run_baseline.py": "01f34e99a1562d9ba23b2d8de6a0c7db7280c395b761c61677738cb8df52ae63",
+    "configs/baseline_protocol_v2.json": "cffa1b44bfabab30655c79202a207509fec52ce09bcf4fb2a8eeef2dfa918560",
+    "configs/data_tasks/gsm8k_bluewhale_xml.yaml": "aa130ec29c65e087c21a3d911e3a27201e056743d29d9580b890268f5f504600",
+    "data/gsm8k/processed/eval/test_prompts.jsonl": "cdd470e9534c465d90ec04bbb1f3e2de5ec818256de33eb6e188a30981ac251f",
+    "data/gsm8k/processed/eval/test_labels.jsonl": "e1e3e0906c542b7b36cd252a94afc864020810db8a7ac919dc4d973d8180ac1c",
+    "data/gsm8k/splits/test.jsonl": "3d9971d4545b07739f108972310a0a389a4b19b58596d2095eb6872a4ddc33a2"
+  }
+}

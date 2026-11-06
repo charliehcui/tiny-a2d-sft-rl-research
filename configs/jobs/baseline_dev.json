@@ -1,0 +1,11 @@
+{
+  "enabled": true,
+  "stage": "baseline",
+  "command": ["{python}", "-u", "{project}/scripts/run_baseline.py", "--split", "validation", "--limit", "8", "--protocol", "{project}/configs/baseline_protocol_v2.json", "--output", "{run_dir}/evaluation"],
+  "progress": {"kind": "jsonl", "path": "evaluation/predictions.jsonl", "total": 8},
+  "required_outputs": ["evaluation/summary.json", "evaluation/native_results.json", "evaluation/predictions.jsonl"],
+  "max_runtime_minutes": 15,
+  "poll_seconds": 5,
+  "stop_grace_seconds": 120,
+  "min_free_gib": 0.1
+}

@@ -1,0 +1,28 @@
+# Generated environments and caches
+__pycache__/
+*.py[cod]
+.venv/
+.env
+.env.*
+.DS_Store
+Thumbs.db
+
+# Credentials and private keys
+id_rsa*
+id_ed25519*
+*.pem
+*.key
+
+# Downloaded base / restored merged models and intermediate states
+/models/Qwen3-0.6B-diffusion-mdlm-v0.1/
+/runs/**/final_model/
+*.pt
+*.pth
+*.bin
+/cache/
+
+# Keep only the two source fixtures required by the original tests
+/work/*
+!/work/rl_source/
+/third_party/dllm/
+/third_party/lm-evaluation-harness/

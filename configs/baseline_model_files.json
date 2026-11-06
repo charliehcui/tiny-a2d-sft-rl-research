@@ -1,0 +1,84 @@
+{
+  "model_id": "dllm-hub/Qwen3-0.6B-diffusion-mdlm-v0.1",
+  "revision": "c8d24a3f4adaeef46881b450e1bf7d1005203bd7",
+  "files": [
+    {
+      "path": ".gitattributes",
+      "size": 184,
+      "sha256": null,
+      "git_blob_oid": "d849d97f30a3bcabb792fdb78de861bae3b550dc"
+    },
+    {
+      "path": "README.md",
+      "size": 11510,
+      "sha256": null,
+      "git_blob_oid": "1f36e0b6c82ae9aee1d63a8429a48087db5cb7ea"
+    },
+    {
+      "path": "added_tokens.json",
+      "size": 729,
+      "sha256": null,
+      "git_blob_oid": "7fc75c03b7272727d188f3bfb73ba3065717a02f"
+    },
+    {
+      "path": "chat_template.jinja",
+      "size": 4116,
+      "sha256": null,
+      "git_blob_oid": "699ff8df401fe4788525e9c1f9b86a99eadd6230"
+    },
+    {
+      "path": "config.json",
+      "size": 1579,
+      "sha256": null,
+      "git_blob_oid": "7f74646e162d089506ee6188853254158509afce"
+    },
+    {
+      "path": "generation_config.json",
+      "size": 157,
+      "sha256": null,
+      "git_blob_oid": "7aa2acd93f2841e50e32007221d3285b68df69c4"
+    },
+    {
+      "path": "merges.txt",
+      "size": 1671853,
+      "sha256": null,
+      "git_blob_oid": "31349551d90c7606f325fe0f11bbb8bd5fa0d7c7"
+    },
+    {
+      "path": "model.safetensors",
+      "size": 1503300328,
+      "sha256": "3485d18016ce6c302e8973809b47aa6369d6612ef9978d0690b4575d1193e932",
+      "git_blob_oid": null
+    },
+    {
+      "path": "modeling_qwen3.py",
+      "size": 7184,
+      "sha256": null,
+      "git_blob_oid": "44d960d2bcf5e8faa3c79b42de22e9df94903ee6"
+    },
+    {
+      "path": "special_tokens_map.json",
+      "size": 787,
+      "sha256": null,
+      "git_blob_oid": "795db154e4ae50116b811cbb456007019ff6cea6"
+    },
+    {
+      "path": "tokenizer.json",
+      "size": 11422839,
+      "sha256": "6d55810de1daf81d1d1259355b4b85810385022ab745be68029295935a4eacf0",
+      "git_blob_oid": null
+    },
+    {
+      "path": "tokenizer_config.json",
+      "size": 5645,
+      "sha256": null,
+      "git_blob_oid": "4cb406001313e9b9f1cf53935c32bdca59e16bc2"
+    },
+    {
+      "path": "vocab.json",
+      "size": 2776833,
+      "sha256": null,
+      "git_blob_oid": "4783fe10ac3adce15ac8f358ef5462739852c569"
+    }
+  ]
+}

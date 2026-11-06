@@ -1,0 +1,30 @@
+{
+  "enabled": true,
+  "stage": "rl",
+  "command": [
+    "{python}",
+    "-u",
+    "{project}/scripts/train_rl.py",
+    "--config",
+    "{project}/configs/rl_tiny_a2d.json",
+    "--run-dir",
+    "{run_dir}",
+    "--smoke"
+  ],
+  "progress": {
+    "kind": "trainer",
+    "path": "training_progress.json"
+  },
+  "required_outputs": [
+    "training_summary.json",
+    "checkpoints/trainer_state.json",
+    "final_adapter/adapter_config.json",
+    "final_adapter/adapter_model.safetensors",
+    "smoke_checks.json"
+  ],
+  "max_runtime_minutes": 15,
+  "poll_seconds": 5,
+  "stop_grace_seconds": 300,
+  "min_free_gib": 1.65,
+  "note": "Only outcome correctness reward; native DiffuGRPOTrainer from the fixed SFT final model. Manual GPU stop. Never run the official test split."
+}

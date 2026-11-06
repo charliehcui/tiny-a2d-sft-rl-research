@@ -1,0 +1,47 @@
+{
+  "status": "passed",
+  "method": "Read-only ZIP + restricted pickle metadata reconstruction; scalar FP32 AdamW step tensors read directly from ZIP storage; no torch imports or arbitrary pickle globals",
+  "source_archives_in_submission": false,
+  "runs": {
+    "sft": {
+      "source": "矩池云/sft-gsm8k-20261104-011915/checkpoints/checkpoint-626/optimizer.pt",
+      "bytes": 40699434,
+      "sha256": "1bf0cb48614b32709178375c35054d65c74334cab0cc4cff55b96bc43703be67",
+      "adamw_state_tensors": 392,
+      "unique_step_counters": [
+        626.0
+      ],
+      "expected_step": 626
+    },
+    "rl_pilot1": {
+      "source": "矩池云/rl-gsm8k-512-g4-20261104-110156/checkpoints/checkpoint-32/optimizer.pt",
+      "bytes": 40699434,
+      "sha256": "f70b67b11c513fab2341f58a335b132b1aade58d2aae95544f8546bc9e8f5d5b",
+      "adamw_state_tensors": 392,
+      "unique_step_counters": [
+        32.0
+      ],
+      "expected_step": 32
+    },
+    "rl_pilot2": {
+      "source": "矩池云/rl-static512-g4-20261105-013032/checkpoints/checkpoint-32/optimizer.pt",
+      "bytes": 40699434,
+      "sha256": "0d7a95bce472ca436397b9e314b50afe76ad3bb3e4be6284f2035f62ebbcf091",
+      "adamw_state_tensors": 392,
+      "unique_step_counters": [
+        32.0
+      ],
+      "expected_step": 32
+    },
+    "final_rl": {
+      "source": "矩池云/rl-reuse1536-g4-u4-20261105-final01/checkpoints/checkpoint-384/optimizer.pt",
+      "bytes": 40699434,
+      "sha256": "5c66cb417f26608dd33144718a8aea65734c5f3d5e5ee3338b5538b135777355",
+      "adamw_state_tensors": 392,
+      "unique_step_counters": [
+        384.0
+      ],
+      "expected_step": 384
+    }
+  }
+}
